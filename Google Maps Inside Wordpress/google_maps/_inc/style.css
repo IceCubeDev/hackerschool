@@ -1,0 +1,90 @@
+ html, body, #map_canvas {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        font-family: sans-serif;
+        font-size: 14px;
+}
+
+table {
+  font-size: 12px;
+}
+#map_canvas {
+  padding: 0;
+  width: 80%;
+  height: 100%;
+  border: 1px solid grey;
+  float: left;
+}
+
+#search {
+    margin-top: 10px;
+    height:100%; 
+    width:100%;
+    padding: 0px;
+}
+
+#listing {  
+  height: 100%;
+  overflow: auto;
+  cursor: pointer;
+  overflow-x: hidden;
+  border: 1px solid lightgrey;
+}
+#controls {
+  width: 346px;
+  text-align: right;
+  padding-top: 2px;
+}
+
+#keywordField {
+  width: 220px;
+  height: 25px;
+  top: 0;
+  left: 78px;
+  position: absolute;
+}
+
+#search-button {
+  width: 220px;
+  height: 25px;
+  top: 0;
+  left: 160px;
+  position: absolute;
+}
+
+#keyword {
+  width: 100%;
+}
+
+#resultsTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#keywordsLabel {
+  text-align: right;
+  width: 70px;
+  font-size: 14px;
+  padding: 4px;
+}
+
+#results td, #results th {
+    font-size: 1em;
+    padding: 3px 7px 2px 7px;
+}
+
+#results th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #5A016D;
+    color: #ffffff;
+}
+
+#results tr.alt td {
+    color: #000000;
+    background-color: #EAF2D3;
+}

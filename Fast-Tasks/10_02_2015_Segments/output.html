@@ -1,0 +1,72 @@
+
+<html>
+<head>
+    <title>Segments HTML Output</title>
+    <style>
+        hr {
+            display:block;
+            height: 1px;
+            color: red;
+            width: 30px;
+            border: 0;
+            border-top: 1px solid red;
+        }
+        .border td {
+            border-left: 1px solid black;
+            width: 30px;
+        }
+    </style>
+    <script>
+        function buildResult() {
+            var resultTable = document.getElementById("results");
+
+            var row = resultTable.insertRow(0);
+            row.setAttribute("class", "border");
+            var column = row.insertCell(0);
+            var column = row.insertCell(1);
+            var column = row.insertCell(2);
+            column.innerHTML="<hr>";
+            var column = row.insertCell(3);
+            column.innerHTML="<hr>";
+            var column = row.insertCell(4);
+            var column = row.insertCell(5);
+            var column = row.insertCell(6);
+            var column = row.insertCell(7);
+            var column = row.insertCell(8);
+            column.innerHTML="<hr>";
+            var column = row.insertCell(9);
+            column.innerHTML="<hr>";
+            var column = row.insertCell(10);
+
+            var row = resultTable.insertRow(1);
+            var column = row.insertCell(0);
+            column.innerHTML="ab";
+            var column = row.insertCell(1);
+            column.innerHTML="";
+            var column = row.insertCell(2);
+            column.innerHTML="a";
+            var column = row.insertCell(3);
+            column.innerHTML="b";
+            var column = row.insertCell(4);
+            column.innerHTML="a";
+            var column = row.insertCell(5);
+            column.innerHTML="";
+            var column = row.insertCell(6);
+            column.innerHTML="ab";
+            var column = row.insertCell(7);
+            column.innerHTML="";
+            var column = row.insertCell(8);
+            column.innerHTML="a";
+            var column = row.insertCell(9);
+            column.innerHTML="b";
+            var column = row.insertCell(10);
+            column.innerHTML="a";
+        }
+    </script>
+</head>
+
+<body onload="buildResult()">
+<table id="results">
+</table>
+</body>
+</html>

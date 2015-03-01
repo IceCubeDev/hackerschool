@@ -1,0 +1,31 @@
+\hypertarget{namespace_connection_manager}{\section{Connection\-Manager Namespace Reference}
+\label{namespace_connection_manager}\index{Connection\-Manager@{Connection\-Manager}}
+}
+
+
+The \hyperlink{namespace_connection_manager}{Connection\-Manager} module contains all of the necessary classes for handling a connection.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_connection_manager_1_1_buffer}{Buffer}
+\begin{DoxyCompactList}\small\item\em Class representing a byte buffer. \end{DoxyCompactList}\item 
+class \hyperlink{class_connection_manager_1_1_connection}{Connection}
+\begin{DoxyCompactList}\small\item\em Class representing a physical connection to the server. \end{DoxyCompactList}\item 
+class \hyperlink{class_connection_manager_1_1_connection_manager}{Connection\-Manager}
+\begin{DoxyCompactList}\small\item\em Class used for managing active connections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_connection_manager_acf0b032340426584ea50a6ce0ac79f84}{string {\bfseries \-\_\-\-\_\-author\-\_\-\-\_\-} = 'Ivan Dortulov'}\label{namespace_connection_manager_acf0b032340426584ea50a6ce0ac79f84}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{namespace_connection_manager}{Connection\-Manager} module contains all of the necessary classes for handling a connection. It consists of two classes\-: \hyperlink{class_connection_manager_1_1_connection}{Connection} and \hyperlink{namespace_connection_manager}{Connection\-Manager}.
+
+The \hyperlink{class_connection_manager_1_1_connection}{Connection} class is just a simple representation of a connection. It contains a socket handle used to send and receive data, an input\-\_\-buffer which stores the data received from the socket and an output\-\_\-buffer from which data is sent to the socket.
+
+The \hyperlink{namespace_connection_manager}{Connection\-Manager} class creates the \hyperlink{class_connection_manager_1_1_connection}{Connection} objects. It receives messages from the Web\-Server class informing it when new connections have been established and when data has been received. It is responsible for managing the \hyperlink{class_connection_manager_1_1_connection}{Connection} objects. 

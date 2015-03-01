@@ -1,0 +1,109 @@
+\hypertarget{class_async_http_server_1_1_async_http_server}{\section{Async\-Http\-Server.\-Async\-Http\-Server Class Reference}
+\label{class_async_http_server_1_1_async_http_server}\index{Async\-Http\-Server.\-Async\-Http\-Server@{Async\-Http\-Server.\-Async\-Http\-Server}}
+}
+
+
+Class representing an asynchronous Http Server capable of handling G\-E\-T and P\-O\-S\-T requests.  
+
+
+Inheritance diagram for Async\-Http\-Server.\-Async\-Http\-Server\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_async_http_server_1_1_async_http_server}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_async_http_server_1_1_async_http_server_a1f40cb27ad3596f0cfe7d485d4915a60}{def \hyperlink{class_async_http_server_1_1_async_http_server_a1f40cb27ad3596f0cfe7d485d4915a60}{\-\_\-\-\_\-init\-\_\-\-\_\-}}\label{class_async_http_server_1_1_async_http_server_a1f40cb27ad3596f0cfe7d485d4915a60}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_async_http_server_1_1_async_http_server_a6bdeabbfb533d9ab41a775e1e7bd56c4}{def \hyperlink{class_async_http_server_1_1_async_http_server_a6bdeabbfb533d9ab41a775e1e7bd56c4}{server\-\_\-bind}}\label{class_async_http_server_1_1_async_http_server_a6bdeabbfb533d9ab41a775e1e7bd56c4}
+
+\begin{DoxyCompactList}\small\item\em Bind the server socket. \end{DoxyCompactList}\item 
+def \hyperlink{class_async_http_server_1_1_async_http_server_ac30900bc1acbf9ed8c97f09874ca6140}{server\-\_\-activate}
+\begin{DoxyCompactList}\small\item\em Activate the server. \end{DoxyCompactList}\item 
+def \hyperlink{class_async_http_server_1_1_async_http_server_a2e97316d792b48283feeb9ae1e7427e6}{server\-\_\-forever}
+\begin{DoxyCompactList}\small\item\em Start the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_async_http_server_1_1_async_http_server_a9e643118346eb938e71094a6867f40e3}{\hyperlink{class_async_http_server_1_1_async_http_server_a9e643118346eb938e71094a6867f40e3}{running}}\label{class_async_http_server_1_1_async_http_server_a9e643118346eb938e71094a6867f40e3}
+
+\begin{DoxyCompactList}\small\item\em Is the server currently running. \end{DoxyCompactList}\item 
+\hypertarget{class_async_http_server_1_1_async_http_server_a84fd8d5d5ab2a0ef2ceaf3fbf29e194a}{\hyperlink{class_async_http_server_1_1_async_http_server_a84fd8d5d5ab2a0ef2ceaf3fbf29e194a}{server\-\_\-address}}\label{class_async_http_server_1_1_async_http_server_a84fd8d5d5ab2a0ef2ceaf3fbf29e194a}
+
+\begin{DoxyCompactList}\small\item\em The host address of the server. \end{DoxyCompactList}\item 
+\hypertarget{class_async_http_server_1_1_async_http_server_abac435708c22ad21af620e3a704d4bfd}{\hyperlink{class_async_http_server_1_1_async_http_server_abac435708c22ad21af620e3a704d4bfd}{server\-\_\-port}}\label{class_async_http_server_1_1_async_http_server_abac435708c22ad21af620e3a704d4bfd}
+
+\begin{DoxyCompactList}\small\item\em The port on which the server is listening for incoming connections. \end{DoxyCompactList}\item 
+\hyperlink{class_async_http_server_1_1_async_http_server_aab2a41d288f15308d305bff00e922200}{connection\-\_\-manager}
+\begin{DoxyCompactList}\small\item\em Instance of the \hyperlink{namespace_connection_manager}{Connection\-Manager} class. \end{DoxyCompactList}\item 
+\hyperlink{class_async_http_server_1_1_async_http_server_ad6c600941d9ab1f0e5880290db2dcb93}{address\-\_\-family}
+\begin{DoxyCompactList}\small\item\em The address family of the server. \end{DoxyCompactList}\item 
+\hyperlink{class_async_http_server_1_1_async_http_server_ae703825864891b7c4f1f69eb541eb64f}{socket\-\_\-type}
+\begin{DoxyCompactList}\small\item\em The type of the socket. \end{DoxyCompactList}\item 
+\hypertarget{class_async_http_server_1_1_async_http_server_a8ce24f83f3acafe8756d1ba1ade13752}{\hyperlink{class_async_http_server_1_1_async_http_server_a8ce24f83f3acafe8756d1ba1ade13752}{socket}}\label{class_async_http_server_1_1_async_http_server_a8ce24f83f3acafe8756d1ba1ade13752}
+
+\begin{DoxyCompactList}\small\item\em The server socket used for listening. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing an asynchronous Http Server capable of handling G\-E\-T and P\-O\-S\-T requests. 
+
+The server uses an asynchronous approach to handle the incoming request. Each time a client connects, that client's socket gets associated with a Connection object.\par
+ The Connection object uses the Http\-Request\-Handler class (each Connection object instantiates Http\-Request\-Handler) to process incoming request.\par
+ Whenever a resource is request the Http\-Response\-Handler tells the Task\-Manager class to create a new Task for obtaining the file. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_async_http_server_1_1_async_http_server_ac30900bc1acbf9ed8c97f09874ca6140}{\index{Async\-Http\-Server\-::\-Async\-Http\-Server@{Async\-Http\-Server\-::\-Async\-Http\-Server}!server\-\_\-activate@{server\-\_\-activate}}
+\index{server\-\_\-activate@{server\-\_\-activate}!AsyncHttpServer::AsyncHttpServer@{Async\-Http\-Server\-::\-Async\-Http\-Server}}
+\subsubsection[{server\-\_\-activate}]{\setlength{\rightskip}{0pt plus 5cm}def Async\-Http\-Server.\-Async\-Http\-Server.\-server\-\_\-activate (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{class_async_http_server_1_1_async_http_server_ac30900bc1acbf9ed8c97f09874ca6140}
+
+
+Activate the server. 
+
+This method calls the server socket's listen() method. \hypertarget{class_async_http_server_1_1_async_http_server_a2e97316d792b48283feeb9ae1e7427e6}{\index{Async\-Http\-Server\-::\-Async\-Http\-Server@{Async\-Http\-Server\-::\-Async\-Http\-Server}!server\-\_\-forever@{server\-\_\-forever}}
+\index{server\-\_\-forever@{server\-\_\-forever}!AsyncHttpServer::AsyncHttpServer@{Async\-Http\-Server\-::\-Async\-Http\-Server}}
+\subsubsection[{server\-\_\-forever}]{\setlength{\rightskip}{0pt plus 5cm}def Async\-Http\-Server.\-Async\-Http\-Server.\-server\-\_\-forever (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{class_async_http_server_1_1_async_http_server_a2e97316d792b48283feeb9ae1e7427e6}
+
+
+Start the server. 
+
+This method larches the server and makes it listen for incoming connections as well as process incoming event. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_async_http_server_1_1_async_http_server_ad6c600941d9ab1f0e5880290db2dcb93}{\index{Async\-Http\-Server\-::\-Async\-Http\-Server@{Async\-Http\-Server\-::\-Async\-Http\-Server}!address\-\_\-family@{address\-\_\-family}}
+\index{address\-\_\-family@{address\-\_\-family}!AsyncHttpServer::AsyncHttpServer@{Async\-Http\-Server\-::\-Async\-Http\-Server}}
+\subsubsection[{address\-\_\-family}]{\setlength{\rightskip}{0pt plus 5cm}Async\-Http\-Server.\-Async\-Http\-Server.\-address\-\_\-family}}\label{class_async_http_server_1_1_async_http_server_ad6c600941d9ab1f0e5880290db2dcb93}
+
+
+The address family of the server. 
+
+Use this variable to change the type of the server's transport protocol to T\-C\-P or U\-D\-P. Default is T\-C\-P (A\-F\-\_\-\-I\-N\-E\-T). \hypertarget{class_async_http_server_1_1_async_http_server_aab2a41d288f15308d305bff00e922200}{\index{Async\-Http\-Server\-::\-Async\-Http\-Server@{Async\-Http\-Server\-::\-Async\-Http\-Server}!connection\-\_\-manager@{connection\-\_\-manager}}
+\index{connection\-\_\-manager@{connection\-\_\-manager}!AsyncHttpServer::AsyncHttpServer@{Async\-Http\-Server\-::\-Async\-Http\-Server}}
+\subsubsection[{connection\-\_\-manager}]{\setlength{\rightskip}{0pt plus 5cm}Async\-Http\-Server.\-Async\-Http\-Server.\-connection\-\_\-manager}}\label{class_async_http_server_1_1_async_http_server_aab2a41d288f15308d305bff00e922200}
+
+
+Instance of the \hyperlink{namespace_connection_manager}{Connection\-Manager} class. 
+
+Only one such instance exists per server. \hypertarget{class_async_http_server_1_1_async_http_server_ae703825864891b7c4f1f69eb541eb64f}{\index{Async\-Http\-Server\-::\-Async\-Http\-Server@{Async\-Http\-Server\-::\-Async\-Http\-Server}!socket\-\_\-type@{socket\-\_\-type}}
+\index{socket\-\_\-type@{socket\-\_\-type}!AsyncHttpServer::AsyncHttpServer@{Async\-Http\-Server\-::\-Async\-Http\-Server}}
+\subsubsection[{socket\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}Async\-Http\-Server.\-Async\-Http\-Server.\-socket\-\_\-type}}\label{class_async_http_server_1_1_async_http_server_ae703825864891b7c4f1f69eb541eb64f}
+
+
+The type of the socket. 
+
+Default is streaming socket (S\-O\-C\-K\-\_\-\-S\-T\-R\-E\-A\-M) 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/ivan/\-Code\-Snippets-\/\-Projects/\-Telebid-\/\-Tasks/\-Web\-Server/\-Async\-Server/Async\-Http\-Server.\-py\end{DoxyCompactItemize}

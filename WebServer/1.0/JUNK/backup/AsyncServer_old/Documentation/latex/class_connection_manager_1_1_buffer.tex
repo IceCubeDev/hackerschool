@@ -1,0 +1,190 @@
+\hypertarget{class_connection_manager_1_1_buffer}{\section{Connection\-Manager.\-Buffer Class Reference}
+\label{class_connection_manager_1_1_buffer}\index{Connection\-Manager.\-Buffer@{Connection\-Manager.\-Buffer}}
+}
+
+
+Class representing a byte buffer.  
+
+
+Inheritance diagram for Connection\-Manager.\-Buffer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_connection_manager_1_1_buffer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{class_connection_manager_1_1_buffer_ab23788175bcdf08a9e4f0c2c50c6ae25}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_connection_manager_1_1_buffer_a69798f2abe4f724882166a213c1479a6}{def \hyperlink{class_connection_manager_1_1_buffer_a69798f2abe4f724882166a213c1479a6}{write}}\label{class_connection_manager_1_1_buffer_a69798f2abe4f724882166a213c1479a6}
+
+\begin{DoxyCompactList}\small\item\em Write data to the buffer. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_buffer_a4d5008eacce719e83798bfa23b7212b0}{read\-\_\-line}
+\begin{DoxyCompactList}\small\item\em Read a single line from the buffer. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_buffer_ab99c940b49904019829273977e496e8a}{get\-\_\-lines}
+\begin{DoxyCompactList}\small\item\em Obtain an array of lines. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_buffer_a27c0a434a0faa3994e7a215f37f5409f}{to\-\_\-string}
+\begin{DoxyCompactList}\small\item\em Converts the buffer to a string. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_buffer_a8e7aa8daa70e06dbe7e7f3156bd198ce}{empty}
+\begin{DoxyCompactList}\small\item\em Checks to see if the buffer is not empty. \end{DoxyCompactList}\item 
+\hypertarget{class_connection_manager_1_1_buffer_afad92674c4836d90b663d6dd364bd026}{def \hyperlink{class_connection_manager_1_1_buffer_afad92674c4836d90b663d6dd364bd026}{clear}}\label{class_connection_manager_1_1_buffer_afad92674c4836d90b663d6dd364bd026}
+
+\begin{DoxyCompactList}\small\item\em Clear the buffer by emptying its contents. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_buffer_ae3d52408d0580093d8e7fdcb33a08d73}{length}
+\begin{DoxyCompactList}\small\item\em Returns the number of bytes inside the buffer. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_buffer_a19dfa227ce76299c4b322be6c2fc6673}{find}
+\begin{DoxyCompactList}\small\item\em Search the buffer for a substring. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_buffer_a08de35576de23a84dcd331a5154650bf}{read}
+\begin{DoxyCompactList}\small\item\em Read a given number of bytes from the buffer by removing the read bytes from the buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_connection_manager_1_1_buffer_a1aa7279467377362cd54f3041e6df72e}{{\bfseries buffer}}\label{class_connection_manager_1_1_buffer_a1aa7279467377362cd54f3041e6df72e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a byte buffer. 
+
+It is used primarily to pass data between the Http\-Request\-Handler and the \hyperlink{class_connection_manager_1_1_connection}{Connection} classes 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_connection_manager_1_1_buffer_ab23788175bcdf08a9e4f0c2c50c6ae25}{\index{Connection\-Manager\-::\-Buffer@{Connection\-Manager\-::\-Buffer}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ConnectionManager::Buffer@{Connection\-Manager\-::\-Buffer}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Buffer.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_buffer_ab23788175bcdf08a9e4f0c2c50c6ae25}
+
+
+Default constructor. 
+
+Constructs an empty buffer. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_connection_manager_1_1_buffer_a8e7aa8daa70e06dbe7e7f3156bd198ce}{\index{Connection\-Manager\-::\-Buffer@{Connection\-Manager\-::\-Buffer}!empty@{empty}}
+\index{empty@{empty}!ConnectionManager::Buffer@{Connection\-Manager\-::\-Buffer}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Buffer.\-empty (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_buffer_a8e7aa8daa70e06dbe7e7f3156bd198ce}
+
+
+Checks to see if the buffer is not empty. 
+
+\begin{DoxyReturn}{Returns}
+Returns True if the buffer is empty and False otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_connection_manager_1_1_buffer_a19dfa227ce76299c4b322be6c2fc6673}{\index{Connection\-Manager\-::\-Buffer@{Connection\-Manager\-::\-Buffer}!find@{find}}
+\index{find@{find}!ConnectionManager::Buffer@{Connection\-Manager\-::\-Buffer}}
+\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Buffer.\-find (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{needle}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_buffer_a19dfa227ce76299c4b322be6c2fc6673}
+
+
+Search the buffer for a substring. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em needle} & The substring to search for. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_connection_manager_1_1_buffer_ab99c940b49904019829273977e496e8a}{\index{Connection\-Manager\-::\-Buffer@{Connection\-Manager\-::\-Buffer}!get\-\_\-lines@{get\-\_\-lines}}
+\index{get\-\_\-lines@{get\-\_\-lines}!ConnectionManager::Buffer@{Connection\-Manager\-::\-Buffer}}
+\subsubsection[{get\-\_\-lines}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Buffer.\-get\-\_\-lines (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_buffer_ab99c940b49904019829273977e496e8a}
+
+
+Obtain an array of lines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sep} & This parameter is optional. If set it will be used as line delimiter \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_connection_manager_1_1_buffer_ae3d52408d0580093d8e7fdcb33a08d73}{\index{Connection\-Manager\-::\-Buffer@{Connection\-Manager\-::\-Buffer}!length@{length}}
+\index{length@{length}!ConnectionManager::Buffer@{Connection\-Manager\-::\-Buffer}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Buffer.\-length (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_buffer_ae3d52408d0580093d8e7fdcb33a08d73}
+
+
+Returns the number of bytes inside the buffer. 
+
+\begin{DoxyReturn}{Returns}
+Size of the buffer in bytes, 
+\end{DoxyReturn}
+\hypertarget{class_connection_manager_1_1_buffer_a08de35576de23a84dcd331a5154650bf}{\index{Connection\-Manager\-::\-Buffer@{Connection\-Manager\-::\-Buffer}!read@{read}}
+\index{read@{read}!ConnectionManager::Buffer@{Connection\-Manager\-::\-Buffer}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Buffer.\-read (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{bytes}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_buffer_a08de35576de23a84dcd331a5154650bf}
+
+
+Read a given number of bytes from the buffer by removing the read bytes from the buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bytes} & The number of bytes to read \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_connection_manager_1_1_buffer_a4d5008eacce719e83798bfa23b7212b0}{\index{Connection\-Manager\-::\-Buffer@{Connection\-Manager\-::\-Buffer}!read\-\_\-line@{read\-\_\-line}}
+\index{read\-\_\-line@{read\-\_\-line}!ConnectionManager::Buffer@{Connection\-Manager\-::\-Buffer}}
+\subsubsection[{read\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Buffer.\-read\-\_\-line (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{sep = {\ttfamily b\char`\"{}\textbackslash{}r\textbackslash{}n\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_buffer_a4d5008eacce719e83798bfa23b7212b0}
+
+
+Read a single line from the buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sep} & This parameter is optional. If set it will be used as line delimiter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Byte string 
+\end{DoxyReturn}
+\hypertarget{class_connection_manager_1_1_buffer_a27c0a434a0faa3994e7a215f37f5409f}{\index{Connection\-Manager\-::\-Buffer@{Connection\-Manager\-::\-Buffer}!to\-\_\-string@{to\-\_\-string}}
+\index{to\-\_\-string@{to\-\_\-string}!ConnectionManager::Buffer@{Connection\-Manager\-::\-Buffer}}
+\subsubsection[{to\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Buffer.\-to\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{decode = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_buffer_a27c0a434a0faa3994e7a215f37f5409f}
+
+
+Converts the buffer to a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em decode} & This parameter is optional. If set the buffer will be decoded with the str.\-decode() method \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String representation of the buffer. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/ivan/\-Code\-Snippets-\/\-Projects/\-Telebid-\/\-Tasks/\-Web\-Server/\-Async\-Server/Connection\-Manager.\-py\end{DoxyCompactItemize}

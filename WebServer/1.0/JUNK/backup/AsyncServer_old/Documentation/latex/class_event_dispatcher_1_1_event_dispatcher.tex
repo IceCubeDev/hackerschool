@@ -1,0 +1,146 @@
+\hypertarget{class_event_dispatcher_1_1_event_dispatcher}{\section{Event\-Dispatcher.\-Event\-Dispatcher Class Reference}
+\label{class_event_dispatcher_1_1_event_dispatcher}\index{Event\-Dispatcher.\-Event\-Dispatcher@{Event\-Dispatcher.\-Event\-Dispatcher}}
+}
+
+
+The \hyperlink{class_event_dispatcher_1_1_event_dispatcher}{Event\-Dispatcher} class is used for dispatching events.  
+
+
+Inheritance diagram for Event\-Dispatcher.\-Event\-Dispatcher\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_event_dispatcher_1_1_event_dispatcher}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_event_dispatcher_1_1_event_dispatcher_abeca2b40e540e444eb96a233a9c697d9}{def \hyperlink{class_event_dispatcher_1_1_event_dispatcher_abeca2b40e540e444eb96a233a9c697d9}{\-\_\-\-\_\-init\-\_\-\-\_\-}}\label{class_event_dispatcher_1_1_event_dispatcher_abeca2b40e540e444eb96a233a9c697d9}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+def \hyperlink{class_event_dispatcher_1_1_event_dispatcher_accf2a074566d17035a7505fbd428dc29}{has\-\_\-event\-\_\-listener}
+\begin{DoxyCompactList}\small\item\em Checks to see if a given \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} is already associated with a given event code. \end{DoxyCompactList}\item 
+def \hyperlink{class_event_dispatcher_1_1_event_dispatcher_ae1fe43c67bf61743f8689fc13354fe22}{add\-\_\-event\-\_\-listener}
+\begin{DoxyCompactList}\small\item\em Register an \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} to listen for an \hyperlink{class_event_dispatcher_1_1_event}{Event} with code code. \end{DoxyCompactList}\item 
+def \hyperlink{class_event_dispatcher_1_1_event_dispatcher_abc78a2a5438b435e11a3f11f51aeabf5}{remove\-\_\-event\-\_\-listener}
+\begin{DoxyCompactList}\small\item\em Stop an \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} from listening for a specific \hyperlink{class_event_dispatcher_1_1_event}{Event} with code code. \end{DoxyCompactList}\item 
+def \hyperlink{class_event_dispatcher_1_1_event_dispatcher_a79463708a50cf97ca6ef39c8004d5550}{remove\-\_\-event\-\_\-listener\-\_\-all}
+\begin{DoxyCompactList}\small\item\em Stops a given \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} from listening to all event codes. \end{DoxyCompactList}\item 
+def \hyperlink{class_event_dispatcher_1_1_event_dispatcher_af7ba3f3cb530002c126735f2b76ab05f}{dispatch\-\_\-event}
+\begin{DoxyCompactList}\small\item\em Dispatch an event to all Event\-Handlers listening for that \hyperlink{class_event_dispatcher_1_1_event}{Event}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_event_dispatcher_1_1_event_dispatcher_a81d42028fa864b144c92df04268ca4e7}{\hyperlink{class_event_dispatcher_1_1_event_dispatcher_a81d42028fa864b144c92df04268ca4e7}{handlers}}\label{class_event_dispatcher_1_1_event_dispatcher_a81d42028fa864b144c92df04268ca4e7}
+
+\begin{DoxyCompactList}\small\item\em List of registered Event\-Handlers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_event_dispatcher_1_1_event_dispatcher}{Event\-Dispatcher} class is used for dispatching events. 
+
+To give a class the ability to send and receive events all you need to do is inherit this class. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_event_dispatcher_1_1_event_dispatcher_ae1fe43c67bf61743f8689fc13354fe22}{\index{Event\-Dispatcher\-::\-Event\-Dispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}!add\-\_\-event\-\_\-listener@{add\-\_\-event\-\_\-listener}}
+\index{add\-\_\-event\-\_\-listener@{add\-\_\-event\-\_\-listener}!EventDispatcher::EventDispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}}
+\subsubsection[{add\-\_\-event\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}def Event\-Dispatcher.\-Event\-Dispatcher.\-add\-\_\-event\-\_\-listener (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{handler, }
+\item[{}]{code}
+\end{DoxyParamCaption}
+)}}\label{class_event_dispatcher_1_1_event_dispatcher_ae1fe43c67bf61743f8689fc13354fe22}
+
+
+Register an \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} to listen for an \hyperlink{class_event_dispatcher_1_1_event}{Event} with code code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handler} & Handler to register, \\
+\hline
+{\em code} & \hyperlink{class_event_dispatcher_1_1_event}{Event} code that this handler is listening for. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_event_dispatcher_1_1_event_dispatcher_af7ba3f3cb530002c126735f2b76ab05f}{\index{Event\-Dispatcher\-::\-Event\-Dispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}!dispatch\-\_\-event@{dispatch\-\_\-event}}
+\index{dispatch\-\_\-event@{dispatch\-\_\-event}!EventDispatcher::EventDispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}}
+\subsubsection[{dispatch\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}def Event\-Dispatcher.\-Event\-Dispatcher.\-dispatch\-\_\-event (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{event}
+\end{DoxyParamCaption}
+)}}\label{class_event_dispatcher_1_1_event_dispatcher_af7ba3f3cb530002c126735f2b76ab05f}
+
+
+Dispatch an event to all Event\-Handlers listening for that \hyperlink{class_event_dispatcher_1_1_event}{Event}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \hyperlink{class_event_dispatcher_1_1_event}{Event} which to dispatch. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_event_dispatcher_1_1_event_dispatcher_accf2a074566d17035a7505fbd428dc29}{\index{Event\-Dispatcher\-::\-Event\-Dispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}!has\-\_\-event\-\_\-listener@{has\-\_\-event\-\_\-listener}}
+\index{has\-\_\-event\-\_\-listener@{has\-\_\-event\-\_\-listener}!EventDispatcher::EventDispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}}
+\subsubsection[{has\-\_\-event\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}def Event\-Dispatcher.\-Event\-Dispatcher.\-has\-\_\-event\-\_\-listener (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{handler, }
+\item[{}]{code}
+\end{DoxyParamCaption}
+)}}\label{class_event_dispatcher_1_1_event_dispatcher_accf2a074566d17035a7505fbd428dc29}
+
+
+Checks to see if a given \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} is already associated with a given event code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handler} & The \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} to check for. \\
+\hline
+{\em code} & The event code to check for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True is the \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} is already associated to the event code and False otherwis 
+\end{DoxyReturn}
+\hypertarget{class_event_dispatcher_1_1_event_dispatcher_abc78a2a5438b435e11a3f11f51aeabf5}{\index{Event\-Dispatcher\-::\-Event\-Dispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}!remove\-\_\-event\-\_\-listener@{remove\-\_\-event\-\_\-listener}}
+\index{remove\-\_\-event\-\_\-listener@{remove\-\_\-event\-\_\-listener}!EventDispatcher::EventDispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}}
+\subsubsection[{remove\-\_\-event\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}def Event\-Dispatcher.\-Event\-Dispatcher.\-remove\-\_\-event\-\_\-listener (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{handler, }
+\item[{}]{code}
+\end{DoxyParamCaption}
+)}}\label{class_event_dispatcher_1_1_event_dispatcher_abc78a2a5438b435e11a3f11f51aeabf5}
+
+
+Stop an \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} from listening for a specific \hyperlink{class_event_dispatcher_1_1_event}{Event} with code code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handler} & \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} to remove. \\
+\hline
+{\em code} & \hyperlink{class_event_dispatcher_1_1_event}{Event} code to remove. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_event_dispatcher_1_1_event_dispatcher_a79463708a50cf97ca6ef39c8004d5550}{\index{Event\-Dispatcher\-::\-Event\-Dispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}!remove\-\_\-event\-\_\-listener\-\_\-all@{remove\-\_\-event\-\_\-listener\-\_\-all}}
+\index{remove\-\_\-event\-\_\-listener\-\_\-all@{remove\-\_\-event\-\_\-listener\-\_\-all}!EventDispatcher::EventDispatcher@{Event\-Dispatcher\-::\-Event\-Dispatcher}}
+\subsubsection[{remove\-\_\-event\-\_\-listener\-\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}def Event\-Dispatcher.\-Event\-Dispatcher.\-remove\-\_\-event\-\_\-listener\-\_\-all (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{handler}
+\end{DoxyParamCaption}
+)}}\label{class_event_dispatcher_1_1_event_dispatcher_a79463708a50cf97ca6ef39c8004d5550}
+
+
+Stops a given \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} from listening to all event codes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handler} & The \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} to remove. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/ivan/\-Code\-Snippets-\/\-Projects/\-Telebid-\/\-Tasks/\-Web\-Server/\-Async\-Server/Event\-Dispatcher.\-py\end{DoxyCompactItemize}

@@ -1,0 +1,35 @@
+\hypertarget{namespace_event_dispatcher}{\section{Event\-Dispatcher Namespace Reference}
+\label{namespace_event_dispatcher}\index{Event\-Dispatcher@{Event\-Dispatcher}}
+}
+
+
+The Event\-Dispatcher module contains classes used to implement the {\itshape Observer Pattern}.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_event_dispatcher_1_1_entry}{Entry}
+\begin{DoxyCompactList}\small\item\em Class representing a (handler, event code) pair. \end{DoxyCompactList}\item 
+class \hyperlink{class_event_dispatcher_1_1_event}{Event}
+\begin{DoxyCompactList}\small\item\em Class representing an event. \end{DoxyCompactList}\item 
+class \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler}
+\begin{DoxyCompactList}\small\item\em Abstract class for event handlers. \end{DoxyCompactList}\item 
+class \hyperlink{class_event_dispatcher_1_1_event_dispatcher}{Event\-Dispatcher}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{class_event_dispatcher_1_1_event_dispatcher}{Event\-Dispatcher} class is used for dispatching events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_event_dispatcher_aebf383ab1c47c4d3f05a6bb89e660f3e}{string {\bfseries \-\_\-\-\_\-author\-\_\-\-\_\-} = 'Ivan Dortulov'}\label{namespace_event_dispatcher_aebf383ab1c47c4d3f05a6bb89e660f3e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Event\-Dispatcher module contains classes used to implement the {\itshape Observer Pattern}. It consists of three main components \hyperlink{class_event_dispatcher_1_1_event}{Event}, \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} and Event\-Dispatcher.
+
+Events can be anything inside your application from a user clicking a button, a file being opened, a socket being closed to a thread finishing its execution. It is used for communication between the components of the Async\-Server.
+
+The \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} is an abstract class containing only one method called handle\-\_\-event(). Each \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} is associated with a given event code. When the event occurs the handle\-\_\-event() method of the appropriate \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler} is called to handle that event.
+
+The Event\-Dispatcher class is used to dispatch messages to the \hyperlink{class_event_dispatcher_1_1_event_handler}{Event\-Handler}. 

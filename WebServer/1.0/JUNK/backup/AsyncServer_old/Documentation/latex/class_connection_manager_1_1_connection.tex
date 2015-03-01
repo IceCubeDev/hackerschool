@@ -1,0 +1,105 @@
+\hypertarget{class_connection_manager_1_1_connection}{\section{Connection\-Manager.\-Connection Class Reference}
+\label{class_connection_manager_1_1_connection}\index{Connection\-Manager.\-Connection@{Connection\-Manager.\-Connection}}
+}
+
+
+Class representing a physical connection to the server.  
+
+
+Inheritance diagram for Connection\-Manager.\-Connection\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_connection_manager_1_1_connection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{class_connection_manager_1_1_connection_aed48556114c40be29ee0368b0aae32ac}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_connection_a9b2e60752c684646830f8ce9923ee66e}{close\-\_\-connection}
+\begin{DoxyCompactList}\small\item\em Close this connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_connection_manager_1_1_connection_acf891c29169c0404caf1941086ed8ea5}{socket}
+\begin{DoxyCompactList}\small\item\em The socket associated with this connection. \end{DoxyCompactList}\item 
+\hyperlink{class_connection_manager_1_1_connection_a6363bfbd5eb310be1d9d8f8f3c316a64}{input\-\_\-buffer}
+\begin{DoxyCompactList}\small\item\em The input buffer where received data is stored. \end{DoxyCompactList}\item 
+\hyperlink{class_connection_manager_1_1_connection_a3dcce4ca0299bef196ffb49ab2795330}{output\-\_\-buffer}
+\begin{DoxyCompactList}\small\item\em The output buffer where data, which needs to be sent over the socket is stored. \end{DoxyCompactList}\item 
+\hyperlink{class_connection_manager_1_1_connection_a36948dfdd00bb9b1f3d8246c874238a9}{handler}
+\begin{DoxyCompactList}\small\item\em This is an instance of the Http\-Request\-Handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a physical connection to the server. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_connection_manager_1_1_connection_aed48556114c40be29ee0368b0aae32ac}{\index{Connection\-Manager\-::\-Connection@{Connection\-Manager\-::\-Connection}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!ConnectionManager::Connection@{Connection\-Manager\-::\-Connection}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Connection.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{socket}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_connection_aed48556114c40be29ee0368b0aae32ac}
+
+
+Default constructor. 
+
+Sets the socket associated with this connection. 
+\begin{DoxyParams}{Parameters}
+{\em socket} & The connection socket \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_connection_manager_1_1_connection_a9b2e60752c684646830f8ce9923ee66e}{\index{Connection\-Manager\-::\-Connection@{Connection\-Manager\-::\-Connection}!close\-\_\-connection@{close\-\_\-connection}}
+\index{close\-\_\-connection@{close\-\_\-connection}!ConnectionManager::Connection@{Connection\-Manager\-::\-Connection}}
+\subsubsection[{close\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Connection.\-close\-\_\-connection (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_connection_a9b2e60752c684646830f8ce9923ee66e}
+
+
+Close this connection. 
+
+Closes the connection by calling the close() method on the socket. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_connection_manager_1_1_connection_a36948dfdd00bb9b1f3d8246c874238a9}{\index{Connection\-Manager\-::\-Connection@{Connection\-Manager\-::\-Connection}!handler@{handler}}
+\index{handler@{handler}!ConnectionManager::Connection@{Connection\-Manager\-::\-Connection}}
+\subsubsection[{handler}]{\setlength{\rightskip}{0pt plus 5cm}Connection\-Manager.\-Connection.\-handler}}\label{class_connection_manager_1_1_connection_a36948dfdd00bb9b1f3d8246c874238a9}
+
+
+This is an instance of the Http\-Request\-Handler. 
+
+It is responsible for processing request and generating responses. \hypertarget{class_connection_manager_1_1_connection_a6363bfbd5eb310be1d9d8f8f3c316a64}{\index{Connection\-Manager\-::\-Connection@{Connection\-Manager\-::\-Connection}!input\-\_\-buffer@{input\-\_\-buffer}}
+\index{input\-\_\-buffer@{input\-\_\-buffer}!ConnectionManager::Connection@{Connection\-Manager\-::\-Connection}}
+\subsubsection[{input\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}Connection\-Manager.\-Connection.\-input\-\_\-buffer}}\label{class_connection_manager_1_1_connection_a6363bfbd5eb310be1d9d8f8f3c316a64}
+
+
+The input buffer where received data is stored. 
+
+\hypertarget{class_connection_manager_1_1_connection_a3dcce4ca0299bef196ffb49ab2795330}{\index{Connection\-Manager\-::\-Connection@{Connection\-Manager\-::\-Connection}!output\-\_\-buffer@{output\-\_\-buffer}}
+\index{output\-\_\-buffer@{output\-\_\-buffer}!ConnectionManager::Connection@{Connection\-Manager\-::\-Connection}}
+\subsubsection[{output\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}Connection\-Manager.\-Connection.\-output\-\_\-buffer}}\label{class_connection_manager_1_1_connection_a3dcce4ca0299bef196ffb49ab2795330}
+
+
+The output buffer where data, which needs to be sent over the socket is stored. 
+
+\hypertarget{class_connection_manager_1_1_connection_acf891c29169c0404caf1941086ed8ea5}{\index{Connection\-Manager\-::\-Connection@{Connection\-Manager\-::\-Connection}!socket@{socket}}
+\index{socket@{socket}!ConnectionManager::Connection@{Connection\-Manager\-::\-Connection}}
+\subsubsection[{socket}]{\setlength{\rightskip}{0pt plus 5cm}Connection\-Manager.\-Connection.\-socket}}\label{class_connection_manager_1_1_connection_acf891c29169c0404caf1941086ed8ea5}
+
+
+The socket associated with this connection. 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/ivan/\-Code\-Snippets-\/\-Projects/\-Telebid-\/\-Tasks/\-Web\-Server/\-Async\-Server/Connection\-Manager.\-py\end{DoxyCompactItemize}

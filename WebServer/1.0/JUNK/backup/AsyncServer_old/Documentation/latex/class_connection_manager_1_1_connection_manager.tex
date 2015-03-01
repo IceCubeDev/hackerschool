@@ -1,0 +1,93 @@
+\hypertarget{class_connection_manager_1_1_connection_manager}{\section{Connection\-Manager.\-Connection\-Manager Class Reference}
+\label{class_connection_manager_1_1_connection_manager}\index{Connection\-Manager.\-Connection\-Manager@{Connection\-Manager.\-Connection\-Manager}}
+}
+
+
+Class used for managing active connections.  
+
+
+Inheritance diagram for Connection\-Manager.\-Connection\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_connection_manager_1_1_connection_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_connection_manager_1_1_connection_manager_af1b9f53192d93384ed9cb52b265ff0fd}{def \hyperlink{class_connection_manager_1_1_connection_manager_af1b9f53192d93384ed9cb52b265ff0fd}{\-\_\-\-\_\-init\-\_\-\-\_\-}}\label{class_connection_manager_1_1_connection_manager_af1b9f53192d93384ed9cb52b265ff0fd}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_connection_manager_a4a36c1328d67eacf11ea3ad11a892751}{handle\-\_\-event}
+\begin{DoxyCompactList}\small\item\em Method inherited from Event\-Handler class. \end{DoxyCompactList}\item 
+def \hyperlink{class_connection_manager_1_1_connection_manager_a36acc18652824eb9d1c23818ed55effb}{find\-\_\-connection}
+\begin{DoxyCompactList}\small\item\em Iterate through the list of connections and search for a connection associated with socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_connection_manager_1_1_connection_manager_a0c355961ff6a71c3e50b3ed112b8c536}{connections}
+\begin{DoxyCompactList}\small\item\em List of active connections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class used for managing active connections. 
+
+This class is responsible for creating, destroying and updating physical connections. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_connection_manager_1_1_connection_manager_a36acc18652824eb9d1c23818ed55effb}{\index{Connection\-Manager\-::\-Connection\-Manager@{Connection\-Manager\-::\-Connection\-Manager}!find\-\_\-connection@{find\-\_\-connection}}
+\index{find\-\_\-connection@{find\-\_\-connection}!ConnectionManager::ConnectionManager@{Connection\-Manager\-::\-Connection\-Manager}}
+\subsubsection[{find\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Connection\-Manager.\-find\-\_\-connection (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{socket}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_connection_manager_a36acc18652824eb9d1c23818ed55effb}
+
+
+Iterate through the list of connections and search for a connection associated with socket. 
+
+If the function succeeds it returns the connection object associated with the socket. If no such connection is found, the function returns None.
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket} & The socket to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_connection_manager_1_1_connection}{Connection} object associated with socket or {\bfseries None} if no such connection was found. 
+\end{DoxyReturn}
+\hypertarget{class_connection_manager_1_1_connection_manager_a4a36c1328d67eacf11ea3ad11a892751}{\index{Connection\-Manager\-::\-Connection\-Manager@{Connection\-Manager\-::\-Connection\-Manager}!handle\-\_\-event@{handle\-\_\-event}}
+\index{handle\-\_\-event@{handle\-\_\-event}!ConnectionManager::ConnectionManager@{Connection\-Manager\-::\-Connection\-Manager}}
+\subsubsection[{handle\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}def Connection\-Manager.\-Connection\-Manager.\-handle\-\_\-event (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{event}
+\end{DoxyParamCaption}
+)}}\label{class_connection_manager_1_1_connection_manager_a4a36c1328d67eacf11ea3ad11a892751}
+
+
+Method inherited from Event\-Handler class. 
+
+This is where the main logic of the class is realised. This method is called by the Web\-Server class each time it submits an event. Here we create new Connections objects when a connection is established, we close connections which are no longer active and process received data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event that triggered this function. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_connection_manager_1_1_connection_manager_a0c355961ff6a71c3e50b3ed112b8c536}{\index{Connection\-Manager\-::\-Connection\-Manager@{Connection\-Manager\-::\-Connection\-Manager}!connections@{connections}}
+\index{connections@{connections}!ConnectionManager::ConnectionManager@{Connection\-Manager\-::\-Connection\-Manager}}
+\subsubsection[{connections}]{\setlength{\rightskip}{0pt plus 5cm}Connection\-Manager.\-Connection\-Manager.\-connections}}\label{class_connection_manager_1_1_connection_manager_a0c355961ff6a71c3e50b3ed112b8c536}
+
+
+List of active connections. 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/ivan/\-Code\-Snippets-\/\-Projects/\-Telebid-\/\-Tasks/\-Web\-Server/\-Async\-Server/Connection\-Manager.\-py\end{DoxyCompactItemize}

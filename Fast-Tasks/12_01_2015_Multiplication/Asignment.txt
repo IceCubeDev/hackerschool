@@ -1,0 +1,36 @@
+A sequence of the squares of subsequent natural numbers is 1491625364964....
+Write a program multiplication which tells you the gidit located at a fixed position in the sequence.
+
+Input
+single integer N - the number of the digit in the sequence.
+
+Output
+outputs the digit located at the given position
+
+Restrictions: 0 < n < 3200000
+
+EXAMPLE
+Input: 6
+Output: 2
+---
+Input: 10
+Output: 4
+
+=====================
+Редица от квадратите на последователните естествени числа са 1491625364964....
+Напишете програма multiplication, която да показва каква цифра се намира на зададена позиция в тази редица.
+
+Вход
+едно цяло число N – номер на цифра от зададената редица.
+
+Изход
+извежда се намерената цифра
+
+Ограничения 0 < N < 3200000
+
+ПРИМЕРИ
+Вход: 6
+Изход: 2
+----
+Вход: 10
+Изход: 4
