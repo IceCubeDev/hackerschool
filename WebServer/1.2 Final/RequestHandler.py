@@ -4,6 +4,9 @@ import re
 import queue
 import os
 import stat
+import subprocess
+import fcntl
+
 from Log import *
 
 
@@ -25,11 +28,18 @@ class HttpRequest(object):
         self.processing = False
         self.is_script = False
         self.abs_path = ""
+        self.temp_buffer = b""
+
+    @staticmethod
+    def extract_headers_from_string(headers):
+        return dict(re.findall(r"(?P<name>.*?): (?P<value>.*?)\r\n", headers))
 
 class RequestHandler(object):
 
     responses = {200: "OK",
                  404: "File Not Found"}
+
+    SCRIPT_MAX_HEADER_SIZE = 4098
 
     def __init__(self, server, address=""):
         self.server = server
@@ -46,7 +56,9 @@ class RequestHandler(object):
     def __del__(self):
         if self.request_resource is not None:
             try:
-                self.request_resource.close()
+                if not isinstance(self.request_resource, subprocess.Popen):
+                    self.request_resource.close()
+                    self.request_resource = None
             except IOError:
                 Log.w("RequestHandler", "Destructor: nothing to close.")
 
@@ -56,32 +68,27 @@ class RequestHandler(object):
     def finish_request(self):
         Log.d("RequestHandler", "process_next_request: " + self.current_request.request_line[0] +
               " request from " + str(self.address) + " was processed.")
-        del self.current_request
-        self.current_request = None
 
         if self.request_resource is not None:
             try:
-                self.request_resource.close()
+                if not self.current_request.is_script:
+                    self.request_resource.close()
+                else:
+                    self.request_resource.kill()
                 self.request_resource = None
             except IOError as ex:
                 Log.w("RequestHandler", "process_next_request: " + self.address +
                       "Unable to close file: " + str(ex.args[1]))
 
-        #if self.current_request.headers["connection"] == "keep-alive":
-        #    pass
-        #if self.current_request.request_version == "1.1":
-        #    pass
-
+        del self.current_request
+        self.current_request = None
         self.should_close = True
 
     def process_next_request(self):
         if self.current_request is not None:
             if self.current_request.processing:
                 if self.current_request.remaining <= 0:
-                    if not self.current_request.is_script:
-                        self.finish_request()
-                    else:
-                        self.process_script()
+                    self.finish_request()
                 else:
                     if self.current_request.request_method == "get":
                         self.process_get_request()
@@ -105,10 +112,38 @@ class RequestHandler(object):
                           self.address)
 
     def process_script(self):
-        pass
+        if self.request_resource.poll() is None:
+            try:
+                script_output = self.request_resource.stdout.read(1024)
+            except IOError as ex:
+                print(ex)
+                return
+
+            print (script_output)
+            if self.current_request.remaining == 1:
+                self.current_request.temp_buffer += script_output
+                idx = self.current_request.temp_buffer.find(b"\n\n")
+
+                Log.d("RequestHandler", "process_script: Finished reading script headers: " +
+                           str(self.current_request.temp_buffer))
+                headers = self.current_request.temp_buffer[:idx+2]
+                self.current_request.temp_buffer = self.current_request.temp_buffer[idx+2:]
+                headers = headers.replace(b"\n", b"\r\n")
+                self.current_request.remaining = 2
+                self.output += self.generate_response(200, "1.1",
+                                                      HttpRequest.extract_headers_from_string(headers.decode())).\
+                                                      encode()
+                self.output += self.current_request.temp_buffer
+            else:
+                 self.output += script_output
+        else:
+            self.current_request.remaining = 0
+            Log.d("RequestHandler", "process_script: Finished reading script headers: " +
+                  str(self.current_request.temp_buffer))
 
     def process_get_request(self):
         # Check if file still exists
+        if not self.current_request.is_script:
             try:
                 if os.stat(self.current_request.abs_path)[stat.ST_SIZE] <= 0:
                     raise IOError(-1, "File deleted!")
@@ -123,6 +158,8 @@ class RequestHandler(object):
                       self.current_request.request_uri)
                 self.output += read_chunk
                 self.current_request.remaining -= len(read_chunk)
+        else:
+            self.process_script()
 
     def init_request(self, request):
         Log.d("RequestHandler", "init_request: " + self.address + " Initializing request")
@@ -140,25 +177,40 @@ class RequestHandler(object):
                 if file_ext == ".py":
                     Log.d("RequestHandler", "init_request: " + self.address + " requested a script execution '" +
                           self.current_request.request_uri)
-                    pass
-                elif file_ext == ".php":
-                    pass
+                    try:
+                        self.request_resource = subprocess.Popen(['python3', file_path],
+                                                                 stdout=subprocess.PIPE,
+                                                                 stdin=subprocess.PIPE,
+                                                                 stderr=subprocess.PIPE)
+                    except subprocess.SubprocessError as ex:
+                        Log.w("RequestHandler", "init_request: " + self.address +
+                              " Error executing script: " + str(ex.args[1]))
+                    else:
+                        self.current_request.processing = True
+                        self.current_request.is_script = True
+                        self.current_request.remaining = 1
+
+                        fd = self.request_resource.stdout.fileno()
+                        fl = fcntl.fcntl(fd, fcntl.F_GETFL)
+                        fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
                 else:
                     try:
                         self.request_resource = open(file_path, "rb")
                     except IOError as ex:
-                        Log.w("RequestHandler", "init_request: Could not open file '" + file_path + "': " + str(ex.args[1]))
+                        Log.w("RequestHandler", "init_request: " + self.address +
+                              " Could not open file '" + file_path + "': " + str(ex.args[1]))
                         self.current_request.remaining = 0
                     else:
                         (file_name, file_ext) = os.path.splitext(os.path.basename(file_path))
                         file_size = os.path.getsize(file_path)
 
-                        Log.d("RequestHandler", "init_request: " + self.address + " File '" + file_path + "' was found(" +
-                              str(file_size) + ")")
+                        Log.d("RequestHandler", "init_request: " + self.address + " File '" + file_path +
+                              "' was found(" +str(file_size) + ")")
 
-                        self.output += self.generate_response(200, "1.1", {"Content-Type": self.guess_content_type(file_ext),
-                                                                           "Content-Length": str(file_size),
-                                                                           "Connection": "close"}).encode()
+                        self.output += self.generate_response(200, "1.1",
+                                                              {"Content-Type": self.guess_content_type(file_ext),
+                                                               "Content-Length": str(file_size),
+                                                               "Connection": "close"}).encode()
                         self.current_request.remaining = file_size
                         self.current_request.processing = True
             elif os.path.isdir(file_path):
@@ -178,7 +230,7 @@ class RequestHandler(object):
     @staticmethod
     def generate_response(code = 200, version="1.1", headers={}, extra=""):
         if code == 200:
-            response = "HTTP/" + version + str(code) + " " + RequestHandler.responses[code] + "\r\n"
+            response = "HTTP/" + version + " " + str(code) + " " + RequestHandler.responses[code] + "\r\n"
             for (key, value) in headers.items():
                 response += str(key) + ": " + str(value) + "\r\n"
 

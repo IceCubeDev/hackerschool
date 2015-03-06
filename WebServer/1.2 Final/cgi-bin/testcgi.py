@@ -1,5 +1,3 @@
-__author__ = 'Ivan Dortulov'
-
 import cgi
 
 print("Content-Type: text/plain;charset=utf-8")
