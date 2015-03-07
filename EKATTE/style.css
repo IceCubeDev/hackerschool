@@ -1,0 +1,174 @@
+#search_box {
+	background-color: rgb(249, 249, 249);
+	border-bottom-color: rgb(208, 208, 208);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-image-outset: 0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-left-color: rgb(208, 208, 208);
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-color: rgb(208, 208, 208);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: rgb(208, 208, 208);
+	border-top-style: solid;
+	border-top-width: 1px;
+	color: rgb(0, 33, 102);
+	display: block;
+	font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 21px;
+	line-height: 20px;
+	margin-bottom: 14px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 14px;
+	padding-bottom: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 12px;
+	width: 918px;
+	zoom: 1;
+}
+
+#result_table {
+	-webkit-border-horizontal-spacing: 2px;
+	-webkit-border-vertical-spacing: 2px;
+	border-bottom-color: rgb(128, 128, 128);
+	border-collapse: collapse;
+	border-left-color: rgb(128, 128, 128);
+	border-right-color: rgb(128, 128, 128);
+	border-top-color: rgb(128, 128, 128);
+	color: rgb(79, 81, 85);
+	display: table;
+	font-family: 'normal Helvetica', Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 154831px;
+	line-height: 20px;
+	width: 863px;
+	zoom: 1;
+}
+
+#result_table tr {
+	border-bottom-color: rgb(128, 128, 128);
+	border-collapse: collapse;
+	border-left-color: rgb(128, 128, 128);
+	border-right-color: rgb(128, 128, 128);
+	border-top-color: rgb(128, 128, 128);
+	color: rgb(79, 81, 85);
+	display: table-row;
+	font-family: 'normal Helvetica', Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 29px;
+	line-height: 20px;
+	vertical-align: middle;
+	width: 863px;
+	zoom: 1;
+}
+
+#result_table th {
+	border-bottom-color: rgb(238, 238, 238);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-collapse: collapse;
+	border-image-outset: 0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-left-color: rgb(238, 238, 238);
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-color: rgb(238, 238, 238);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: rgb(238, 238, 238);
+	border-top-style: solid;
+	border-top-width: 1px;
+	color: rgb(79, 81, 85);
+	display: table-cell;
+	font-family: 'normal Helvetica', Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	height: 20px;
+	line-height: 20px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 4px;
+	vertical-align: middle;
+	width: 37px;
+	zoom: 1;
+}
+
+#result_table tr {
+	border-bottom-color: rgb(128, 128, 128);
+	border-collapse: collapse;
+	border-left-color: rgb(128, 128, 128);
+	border-right-color: rgb(128, 128, 128);
+	border-top-color: rgb(128, 128, 128);
+	color: rgb(79, 81, 85);
+	display: table-row;
+	font-family: 'normal Helvetica', Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 29px;
+	line-height: 20px;
+	vertical-align: middle;
+	width: 863px;
+	zoom: 1;
+}
+
+#result_table td {
+	border-bottom-color: rgb(238, 238, 238);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-collapse: collapse;
+	border-image-outset: 0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-left-color: rgb(238, 238, 238);
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-color: rgb(238, 238, 238);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: rgb(238, 238, 238);
+	border-top-style: solid;
+	border-top-width: 1px;
+	color: rgb(79, 81, 85);
+	display: table-cell;
+	font-family: 'normal Helvetica', Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 20px;
+	line-height: 20px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 4px;
+	vertical-align: middle;
+	width: 37px;
+	zoom: 1;
+}
