@@ -143,6 +143,7 @@ class QueryGenerator(object):
         stack = [root]
         query = "SELECT\n\t*\nFROM\n\t" + str(root) + " AS " + root + '\n'
 
+
         while len(stack) > 0:
             table_name = stack.pop()
             current_node = graph[table_name]

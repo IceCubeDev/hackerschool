@@ -133,7 +133,7 @@ function print_results($result, $url) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
 			echo "<tr>";
-			echo "<td>".$row["id"]."</td>";
+			echo "<td>".$row["ekatte"]."</td>";
 			echo "<td>".$row["grad_selo"]."</td>";
 			echo "<td>".$row["naseleno_mqsto"]."</td>";
 			echo "<td>".$row["oname"]."</td>";
