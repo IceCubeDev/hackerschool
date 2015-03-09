@@ -14,26 +14,16 @@
 				<option value="obstina_name">Община</option>
 				<option value="kmetstvo_name">Кметство</option>
 			</select>                            
-		<input type="text" name="searching" value="София" id="searching" size="40">                            
+		<input type="text" name="searching" value="" id="searching" size="40">                            
 		<input type="submit" name="search" value="Търси">                            
 		<input type="submit" name="load_all" value="Зареди всички"> 
 	</form>
 </div>
-<table id="result_table">
-	<thead>
-        <tr>
-			<th><a href="#&sort=ekatte">ЕКАТТЕ</a></th>
-			<th><a href="#&sort=grs">Гр./с</a></th>
-            <th><a href="#&sort=name">Населено място</a></th>
-            <th><a href="#&sort=obstina_name">Област</a></th>
-            <th><a href="#&sort=obstina_name">Община</a></th>
-            <th><a href="#&sort=kmetstvo_name">Кметство</a></th>
-        </tr>
 <?php
 $servername = "localhost";
 $database = "ekatte";
 $username = "root";
-$password = "089860";
+$password = "******";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -45,14 +35,43 @@ if ($conn->connect_error) {
 
 mysqli_set_charset($conn, "utf8");
 
-if (isset($_GET['search']) && isset($_GET['searching']) && isset($_GET['fields'])) {
+$query = "SELECT 
+			* 
+		  FROM 
+			ekatte AS _ekatte
+		  LEFT JOIN oblast AS _oblast 
+			ON _ekatte.oblast = _oblast.oblast
+		  LEFT JOIN obshtina AS _obshtina 
+			ON _ekatte.obshtina = _obshtina.obshtina
+		  LEFT JOIN kmetstvo AS _kmetstvo 
+			ON _ekatte.kmetstvo = _kmetstvo.kmetstvo ";
+
+if (isset($_GET['sort'])) {
+	if ($_GET['sort'] == "ekatte") {
+		$query .= "ORDER BY _ekatte.ekatte ASC";
+	}
+	else if ($_GET['sort'] == "grs") {
+		$query .= "ORDER BY _ekatte.grad_selo ASC";
+	}
+	else if ($_GET['sort'] == "naseleno_mqsto") {
+		$query .= "ORDER BY _ekatte.grad_selo ASC";
+	}
+	else if ($_GET['sort'] == "oblast_name") {
+		$query .= "ORDER BY _oblast.oname ASC";
+	}
+	else if ($_GET['sort'] == "obshtina_name") {
+		$query .= "ORDER BY _obshtina.obname ASC";
+	}
+	else if ($_GET['sort'] == "kmetsvto_name") {
+		$query .= "ORDER BY _kmetstvo.kname ASC";
+	}
+}			
+			
+if (isset($_GET['search']) && isset($_GET['fields']) && isset($_GET['searching']) &&
+    !empty($_GET['fields']) && !empty($_GET['searching'])) {
 	$search_type = $_GET['fields'];
 	$search_criteria = $_GET['searching'];
-	
-	$query = "SELECT * FROM ekatte AS _ekatte
-			  LEFT JOIN oblast AS _oblast ON _ekatte.oblast = _oblast.oblast
-			  LEFT JOIN obshtina AS _obshtina ON _ekatte.obshtina = _obshtina.obshtina
-			  LEFT JOIN kmetstvo AS _kmetstvo ON _ekatte.kmetstvo = _kmetstvo.kmetstvo ";
+	$url = "ekatte.php?search=Търси&fields=".$search_type."&searching=".$search_criteria;
 	
 	if ($search_type == "name") {
 		$query .= "WHERE _ekatte.naseleno_mqsto LIKE '%".mysqli_real_escape_string($conn, $_GET['searching'])."'";
@@ -68,12 +87,48 @@ if (isset($_GET['search']) && isset($_GET['searching']) && isset($_GET['fields']
 	
 	if (isset($_GET['sort'])) {
 		if ($_GET['sort'] == "ekatte") {
-			$query .= "ORDER BY _ekatte.ekatte";
+			$query .= "ORDER BY _ekatte.ekatte DESC";
+		}
+		else if ($_GET['sort'] == "grs") {
+			$query .= "ORDER BY _ekatte.grad_selo DESC";
+		}
+		else if ($_GET['sort'] == "naseleno_mqsto") {
+			$query .= "ORDER BY _ekatte.grad_selo DESC";
+		}
+		else if ($_GET['sort'] == "oblast_name") {
+			$query .= "ORDER BY _oblast.oname DESC";
+		}
+		else if ($_GET['sort'] == "obshtina_name") {
+			$query .= "ORDER BY _obshtina.obname DESC";
+		}
+		else if ($_GET['sort'] == "kmetsvto_name") {
+			$query .= "ORDER BY _kmetstvo.kname DESC";
 		}
 	}
 	
 	$result = $conn->query($query);
+	print_results($result, $url);
+} else if (isset($_GET['load_all'])) {
+	$url = "ekatte.php?load_all=Зареди+всички";
+	$result = $conn->query($query);
+	print_results($result, $url);
+}
+mysqli_close($conn);
+
+function print_results($result, $url) {	
+?>
+<table id="result_table">
+	<thead>
+        <tr>
+			<th><a href="<?php echo $url."&sort=ekatte";?>">ЕКАТТЕ</a></th>
+			<th><a href="<?php echo $url."&sort=grs";?>">Гр./с</a></th>
+            <th><a href="<?php echo $url."&sort=name";?>">Населено място</a></th>
+            <th><a href="<?php echo $url."&sort=oblast_name";?>">Област</a></th>
+            <th><a href="<?php echo $url."&sort=obshtina_name";?>">Община</a></th>
+            <th><a href="<?php echo $url."&sort=kmetsvto_name";?>">Кметство</a></th>
+        </tr>
 		
+<?php		
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
@@ -89,11 +144,11 @@ if (isset($_GET['search']) && isset($_GET['searching']) && isset($_GET['fields']
 	} else {
 		echo "0 results";
 	}
-}
-
-mysqli_close($conn);
 ?>
 	</thead>
 </table>
+<?php
+}
+?>
 </body>
 </html>
