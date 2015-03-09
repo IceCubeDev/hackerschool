@@ -1,0 +1,6 @@
+SELECT
+   name
+FROM 
+   Battles
+WHERE
+   YEAR(date) NOT IN (SELECT launched FROM Ships)

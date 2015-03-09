@@ -1,0 +1,6 @@
+SELECT 
+   country, CONVERT(DECIMAL(10,2),AVG(0.5 * bore * bore * bore)) AS mw
+FROM 
+   Classes as cl
+WHERE cl.class IN (SELECT class FROM classes UNION SELECT class FROM ships UNION SELECT ship FROM Outcomes)
+GROUP BY country

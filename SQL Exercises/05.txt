@@ -1,0 +1,3 @@
+SELECT model, speed, hd FROM PC
+WHERE (cd LIKE '12x' AND price < 600) OR
+      (cd LIKE '24x' AND price < 600)

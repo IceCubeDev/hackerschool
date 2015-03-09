@@ -1,0 +1,5 @@
+SELECT DISTINCT 'Laptop', model, speed
+FROM Laptop
+WHERE speed < 
+(SELECT MIN(speed)
+FROM PC)

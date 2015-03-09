@@ -1,0 +1,10 @@
+SELECT table1.maker, AVG(hd) AS "average capacity of HD"
+FROM PC,
+(SELECT maker, model
+FROM Product
+WHERE type='PC' AND 
+      maker IN (SELECT maker
+                FROM Product
+                WHERE type='Printer')) AS table1
+WHERE PC.model = table1.model
+GROUP BY(table1.maker)

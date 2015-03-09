@@ -1,0 +1,6 @@
+SELECT DISTINCT maker, speed 
+FROM Product, Laptop
+WHERE hd >= 10 AND
+      type = 'Laptop' AND
+      Laptop.model = Product.model
+ORDER BY speed

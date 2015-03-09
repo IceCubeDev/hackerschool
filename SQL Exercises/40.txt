@@ -1,0 +1,7 @@
+SELECT 
+    cl.class, sh.name, cl.country
+FROM 
+    classes as cl, Ships AS sh
+WHERE 
+    cl.class = sh.class AND
+    cl.numGuns >= 10

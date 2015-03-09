@@ -1,0 +1,10 @@
+SELECT 
+   sh.class
+FROM 
+   (SELECT class FROM ships AS sh
+    UNION ALL 
+    SELECT outcomes.ship FROM outcomes, classes WHERE outcomes.ship = classes.class) AS sh
+GROUP BY 
+   sh.class
+HAVING 
+   COUNT(sh.class) = 1

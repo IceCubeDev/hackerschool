@@ -1,0 +1,4 @@
+SELECT DISTINCT maker 
+FROM Product
+WHERE maker NOT IN (SELECT DISTINCT maker FROM Product WHERE type='Laptop') AND
+      maker IN (SELECT DISTINCT maker FROM Product WHERE type='PC')

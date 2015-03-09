@@ -1,0 +1,13 @@
+SELECT 
+    c.class
+FROM 
+    Classes AS c, Ships AS s
+WHERE 
+    C.class = S.name
+UNION
+SELECT 
+   o.ship
+FROM 
+   Outcomes AS o, Classes as c
+WHERE 
+   o.ship = c.class

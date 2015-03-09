@@ -1,0 +1,7 @@
+SELECT maker
+FROM Product
+WHERE model IN (SELECT model FROM Laptop WHERE speed >= 750)
+INTERSECT
+SELECT maker
+FROM Product
+WHERE model IN (SELECT model FROM PC WHERE speed >= 750)

@@ -1,0 +1,18 @@
+SELECT DISTINCT 
+    bat2.ship
+FROM
+    (SELECT 
+         ship, date
+     FROM 
+         outcomes, battles
+     WHERE 
+         outcomes.battle = battles.name AND 
+         outcomes.result = 'damaged') AS bat1,
+    (SELECT 
+         ship, date 
+     FROM 
+         outcomes, battles
+     WHERE 
+         outcomes.battle = battles.name) AS bat2
+WHERE 
+     bat1.ship = bat2.ship AND bat1.date < bat2.date

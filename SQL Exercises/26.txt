@@ -1,0 +1,5 @@
+SELECT AVG(price) AS avg_price
+FROM
+(SELECT price FROM product, pc WHERE pc.model = product.model AND maker = 'A' AND product.type = 'pc'
+	UNION ALL
+	SELECT price FROM product, laptop WHERE laptop.model = product.model AND maker = 'A' AND product.type = 'laptop') as prices

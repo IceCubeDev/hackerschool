@@ -1,0 +1,9 @@
+SELECT DISTINCT 
+   name
+FROM 
+   Ships AS S, Classes AS C
+WHERE 
+   S.class = C.class AND 
+   C.displacement > 35000 AND 
+   launched >= 1922 AND 
+   type = 'bb'

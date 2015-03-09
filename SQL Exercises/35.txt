@@ -1,0 +1,6 @@
+SELECT
+   model, type
+FROM
+   Product
+WHERE
+    model LIKE '%[^a-zA-Z]%' or model LIKE '%[^0-9]%'

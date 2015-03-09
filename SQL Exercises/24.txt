@@ -1,0 +1,9 @@
+SELECT table1.model
+FROM ((SELECT model, price FROM Printer) UNION
+		(SELECT model, price FROM Laptop) UNION
+			(SELECT model, price FROM PC)) AS table1,
+     (SELECT MAX(table2.price) AS max_price FROM
+		((SELECT price FROM Printer) UNION
+			(SELECT price FROM Laptop) UNION
+				(SELECT price FROM PC)) AS table2) AS table3
+WHERE table1.price = table3.max_price

@@ -1,0 +1,16 @@
+SELECT 
+   dict.chr, dict.value
+FROM 
+(SELECT code, 'model' as chr, cast(pc.model as varchar(50)) as value FROM PC 
+UNION
+SELECT code, 'speed' as chr, cast(pc.speed as varchar(50)) as value FROM PC
+UNION
+SELECT code, 'ram' as chr, cast(pc.ram as varchar(50)) as value FROM PC
+UNION
+SELECT code, 'hd' as chr, cast(pc.hd as varchar(50)) as value FROM PC 
+UNION
+SELECT code, 'cd' as chr, cast(pc.cd as varchar(50)) as value FROM PC
+UNION
+SELECT code, 'price' as chr, cast(pc.price as varchar(50)) as value
+FROM PC) AS dict
+WHERE dict.code = (SELECT code FROM PC WHERE code = (SELECT MAX(code) FROM pc))

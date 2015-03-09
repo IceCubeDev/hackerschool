@@ -1,0 +1,8 @@
+SELECT AVG(hd)
+FROM PC
+WHERE model IN (SELECT model
+                FROM Product
+                WHERE maker IN (SELECT maker
+                                FROM Product
+                                WHERE type='Printer') AND 
+                      type='PC')

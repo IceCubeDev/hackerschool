@@ -1,0 +1,9 @@
+SELECT table1.point, table1.date, Income_o.inc, Outcome_o.out
+FROM ((SELECT point, date FROM Income_o) UNION
+      (SELECT point, date FROM Outcome_o)) AS table1
+FULL OUTER JOIN Outcome_o
+ON table1.point = Outcome_o.point AND
+   table1.date = Outcome_o.date
+FULL OUTER JOIN Income_o
+ON table1.point = Income_o.point AND
+   table1.date = Income_o.date
