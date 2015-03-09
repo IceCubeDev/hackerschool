@@ -2,8 +2,8 @@ __author__ = 'Ivan Dortulov'
 
 import psycopg2
 
-class QueryGenerator(object):
 
+class QueryGenerator(object):
     def __init__(self, db_server, db_database, db_user, db_pass):
         self.db_connection = None
         self.db_server = db_server
@@ -78,9 +78,10 @@ class QueryGenerator(object):
                 table_column_is_nullable = table[2]
 
                 if table_name not in self.tables.keys():
-                    self.tables[table_name] = [{"column_name": table_column_name, "nullable":table_column_is_nullable}]
+                    self.tables[table_name] = [{"column_name": table_column_name, "nullable": table_column_is_nullable}]
                 else:
-                    self.tables[table_name].append({"column_name": table_column_name, "nullable":table_column_is_nullable})
+                    self.tables[table_name].append(
+                        {"column_name": table_column_name, "nullable": table_column_is_nullable})
 
         # Obtain the names of all the foreign keys, as well as their relation
         # to other tables
@@ -110,7 +111,8 @@ class QueryGenerator(object):
         graph = {}
 
         for table in self.tables.keys():
-            graph[table] = {"visited": False,
+            graph[table] = {"table_name": table,
+                            "visited": 0,
                             "neighbours": []}
 
         for table in self.tables.keys():
@@ -121,9 +123,8 @@ class QueryGenerator(object):
 
                 if edge is not None:
                     (foreign_table, foreign_key) = edge
-                    current_node["neighbours"].append((column["column_name"], foreign_table, foreign_key))
-                    node = graph[foreign_table]
-                    node["neighbours"].append((foreign_key, table, column["column_name"]))
+                    current_node["neighbours"].append(
+                        (column["column_name"], foreign_table, foreign_key, column["nullable"]))
 
         print("\n\n[TABLE GRAPH]")
         for table in graph.keys():
@@ -131,48 +132,49 @@ class QueryGenerator(object):
 
         return graph
 
-
     def print_table_information(self):
         print("[TABLE INFORMATION]")
         for table in self.tables.keys():
-            print(table,":")
+            print(table, ":")
             for column in self.tables[table]:
                 print("\t", column)
 
-    def traverse_table_graph(self, graph, root):
-        stack = [root]
-        query = "SELECT\n\t*\nFROM\n\t" + str(root) + " AS " + root + '\n'
+    def generate_query(self, graph, root):
+        query = "SELECT * FROM " + root + " AS _" + root + "\n"
+        return query + traverse_graph_helper(g, g[root], '_' + root, [root]) + ";"
 
 
-        while len(stack) > 0:
-            table_name = stack.pop()
-            current_node = graph[table_name]
-            current_node["visited"] = True
+def traverse_graph_helper(g, cur, prev, path):
+    cur['visited'] += 1
+    if cur['neighbours'] is None:
+        return ""
 
-            for neighbour in current_node["neighbours"]:
-                (column_name, foreign_table_name, foreign_column_name) = neighbour
-                node = graph[foreign_table_name]
+    query = ""
+    # print("cur:", cur['name'], ";prev", prev, ";path:", path)
+    for edges in cur['neighbours']:
+        path_copy = copy.copy(path)
+        neighbour = g[edges[1]]
 
-                if node["visited"]:
-                    continue
-                else:
-                    for column in self.tables[foreign_table_name]:
-                        if column["column_name"] == foreign_column_name:
-                            if column["nullable"]:
-                                query += "LEFT JOIN\n\t" + foreign_table_name + " AS " + foreign_table_name
-                                query += " ON " + table_name + "." + column_name + " = " + foreign_table_name + "." + foreign_column_name + "\n"
-                            else:
-                                query += "JOIN\n\t" + foreign_table_name + " AS " + foreign_table_name
-                                query += " ON " + table_name + "." + column_name + " = " + foreign_table_name + "." + foreign_column_name + "\n"
+        # We already have visited this node, check if we are in a cycle
+        if neighbour['visited'] > 0:
+            #print("\tNeighbour ", edges[1], "already visited ", neighbour['visited'], " times!")
+            if len(path) > 1:
+                if path[0] == edges[1] or path[-1] == edges[1]:
+                    #print("\t\tCycle!")
+                    if neighbour['visited'] > 2:
+                        return ""
 
-                    stack.append(foreign_table_name)
+        new = "".join(path) + "_" + edges[1]
+        # If it is nullable
+        if edges[3]:
+            query += "LEFT JOIN " + edges[1] + " AS " + new + "\n"
+            query += "   ON " + new + "." + edges[2] + " = " + prev + "." + edges[0] + "\n"
+        else:
+            query += "JOIN " + edges[1] + " AS " + new + "\n"
+            query += "   ON " + new + "." + edges[2] + " = " + prev + "." + edges[0] + "\n"
 
-        query += ";"
-        return query
+        path_copy.append(edges[1])
+        #print("\t", path_copy, new)
+        query += traverse_graph_helper(g, neighbour, new, path_copy)
 
-    def generate_query(self, start):
-        self.fetch_table_information()
-        self.print_table_information()
-        graph = (self.build_table_graph())
-        print("\n\n[GENERATED QUERY]")
-        print(self.traverse_table_graph(graph, start))
+    return query
