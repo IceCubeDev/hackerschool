@@ -16,14 +16,15 @@ if k < 0 or k > 1000:
     sys.exit(-1)
 
 goat_weights = input("").split(" ")
-if len(goat_weights) < k:
+if len(goat_weights) < k or len(goat_weights) > k:
     print("Not enough sheep weights!", k)
     sys.exit(-1)
 
 for i in range(0, len(goat_weights)):
     goat_weights[i] = int(goat_weights[i])
-    if goat_weights[i] < 1 or goat_weights[i] > 100000:
+    if goat_weights[i] < 1 or goat_weights[i] >= 100000:
         print("Invalid goat weight! A", i)
+        sys.exit(-1)
 
 # ====> SOLUTION <====
 goat_weights.sort()

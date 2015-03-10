@@ -27,8 +27,8 @@ sub simulate($$) {
     my $groups = [];
     my $goats_copy = [@{$goats_ref}];
     
-    print "Boat size: ".$min_score."\n";
-    print (Dumper $goats_ref);
+    #print "Boat size: ".$min_score."\n";
+    #print (Dumper $goats_ref);
     
     for (my $i = 0; $i < $K; $i ++) {
         push $groups, [];
@@ -38,35 +38,35 @@ sub simulate($$) {
     
         while (scalar(@$goats_copy) > 0) {
             my $biggest_goat = shift ($goats_copy);
-            print("Pop: ".$biggest_goat."\n");
+            #print("Pop: ".$biggest_goat."\n");
             
             if ($group_score + $biggest_goat <= $min_score) {
                 push ($group, $biggest_goat);
                 $group_score += $biggest_goat;
-                print("\tAdd to group ".$i." ");
-                print(Dumper $group);
-                print("\n");
+                #print("\tAdd to group ".$i." ");
+                #print(Dumper $group);
+                #print("\n");
             } else {
-                print("\tAdd to remaining.\n");
+                #print("\tAdd to remaining.\n");
                 push(@remaining, $biggest_goat);
-                print("\tRemaining: ", Dumper \@remaining);
-                print "\n";
+                #print("\tRemaining: ", Dumper \@remaining);
+                #print "\n";
             }
         }
         
-        print("Still left for transport: ", scalar(@remaining).": ", Dumper \@remaining);
+        #print("Still left for transport: ", scalar(@remaining).": ", Dumper \@remaining);
         $goats_copy = \@remaining;
-        print("Group ".$i."\n");
-        print(Dumper $group);
+        #print("Group ".$i."\n");
+        #print(Dumper $group);
     }
     
-    print("Unable to transport: ", Dumper $goats_copy, "\n");
+    #print("Unable to transport: ", Dumper $goats_copy, "\n");
     
-    print (Dumper $goats_ref);
+    #print (Dumper $goats_ref);
     if (scalar(@$goats_copy) <= 0) {
         return $min_score;
     } else {
-        print("Increasing boat size ...\n");
+        #print("Increasing boat size ...\n");
         return simulate($min_score + 1, $goats_ref);
     }
 }
