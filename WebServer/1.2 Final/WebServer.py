@@ -63,7 +63,6 @@ class WebServer(object):
         self.connections[client_socket] = RequestHandler(self, str(client_address))
         Log.d("WebServer", "open_connection: New connection from " + str(client_address))
 
-
     def handle_recv_data(self, sock, data):
         if sock not in self.connections.keys():
             Log.w("WebServer", "handle_recv_data: connection not found")

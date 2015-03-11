@@ -3,7 +3,7 @@ __author__ = 'Ivan Dortulov'
 
 class Log(object):
 
-    LOG = True
+    LOG = False
 
     @staticmethod
     def d(tag, msg):

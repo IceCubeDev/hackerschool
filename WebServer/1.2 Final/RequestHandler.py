@@ -83,7 +83,7 @@ class RequestHandler(object):
 
         if self.current_request.input_file is not None:
             self.current_request.input_file.close()
-        
+
         del self.current_request
         self.current_request = None
         self.should_close = True
@@ -229,13 +229,12 @@ class RequestHandler(object):
 
                     try:
                         if request.input_file is not None:
-							request.input_file.seek(0, 2)
-							size = request.input_file.tell()
-							request.input_file.seek(0, 0)
-							
-							environ = os.environ.copy()
-							environ["CONTENT-LENGTH"] = str(size)
-							
+                            request.input_file.seek(0, 2)
+                            size = request.input_file.tell()
+                            request.input_file.seek(0, 0)
+
+                            environ = os.environ.copy()
+                            environ["CONTENT-LENGTH"] = str(size)
                             self.request_resource = subprocess.Popen(['python3', file_path],
                                                                      stdout=subprocess.PIPE,
                                                                      stdin=request.input_file,

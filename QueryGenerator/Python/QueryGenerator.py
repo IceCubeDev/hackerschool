@@ -1,6 +1,7 @@
 __author__ = 'Ivan Dortulov'
 
 import psycopg2
+import copy
 
 
 class QueryGenerator(object):
@@ -108,6 +109,7 @@ class QueryGenerator(object):
                             column["nullable"] = nullable
 
     def build_table_graph(self):
+        self.fetch_table_information()
         graph = {}
 
         for table in self.tables.keys():
@@ -141,7 +143,7 @@ class QueryGenerator(object):
 
     def generate_query(self, graph, root):
         query = "SELECT * FROM " + root + " AS _" + root + "\n"
-        return query + traverse_graph_helper(g, g[root], '_' + root, [root]) + ";"
+        return query + traverse_graph_helper(graph, graph[root], '_' + root, [root]) + ";"
 
 
 def traverse_graph_helper(g, cur, prev, path):

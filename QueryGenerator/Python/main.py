@@ -2,6 +2,6 @@ __author__ = 'Ivan Dortulov'
 
 from QueryGenerator import *
 
-gen = QueryGenerator('localhost', 'postgres', 'postgres', '1234')
-gen.build_table_graph()
-#gen.generate_query('countries')
+gen = QueryGenerator('localhost', 'jointest', 'postgres', 'postgres')
+graph = gen.build_table_graph()
+print(gen.generate_query(graph, 'a'))
