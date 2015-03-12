@@ -22,6 +22,9 @@ class PydbSimple(object):
     def __init__(self, fh=None):
         self.table_handle = fh
 
+    def set_filehandle(self, fh=None):
+        self.table_handle = fh
+
     def insert(self, values):
         if self.write_record(values):
             #print("INSERT(1)")
