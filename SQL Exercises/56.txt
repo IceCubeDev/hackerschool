@@ -1,0 +1,21 @@
+SELECT class, 
+       Sum(Cast(sunks AS NUMERIC(6))) 
+FROM  (SELECT class, 
+              CASE 
+                WHEN result = 'sunk' THEN '1' 
+                ELSE '0' 
+              END AS Sunks 
+       FROM  (SELECT class, 
+                     NAME, 
+                     result 
+              FROM   outcomes 
+                     JOIN ships 
+                       ON ship = NAME 
+              UNION 
+              SELECT class, 
+                     ship, 
+                     result 
+              FROM   classes 
+                     LEFT JOIN outcomes 
+                            ON class = ship) AS A) AS B 
+GROUP  BY class 

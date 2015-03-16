@@ -1,0 +1,27 @@
+SELECT class, 
+       Count(*) 
+FROM   (SELECT class, 
+               NAME 
+        FROM   ships 
+        UNION 
+        SELECT ship AS class, 
+               ship AS NAME 
+        FROM   outcomes 
+        WHERE  ship IN (SELECT class 
+                        FROM   classes)) AS a 
+       JOIN outcomes b 
+         ON NAME = ship 
+WHERE  result = 'sunk' 
+       AND class IN (SELECT class 
+                     FROM   (SELECT class, 
+                                    NAME 
+                             FROM   ships 
+                             UNION 
+                             SELECT ship AS class, 
+                                    ship AS NAME 
+                             FROM   outcomes 
+                             WHERE  ship IN (SELECT class 
+                                             FROM   classes)) c 
+                     GROUP  BY class 
+                     HAVING Count(*) >= 3) 
+GROUP  BY class

@@ -1,0 +1,12 @@
+SELECT 
+    sh.name
+FROM 
+    Ships AS sh 
+LEFT JOIN Classes AS cl
+  ON cl.class = sh.class
+WHERE 
+      cl.numguns > 8 AND  
+      cl.bore <19 AND
+      cl.displacement <= 65000 AND
+      cl.type = 'bb' AND
+      cl.country = 'Japan'

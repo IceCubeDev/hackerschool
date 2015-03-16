@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1426455879 source:c:\users\juxxec_2\documents\github\hackerschool\dbengine\c++\contentvalues.cpp
+	"ContentValues.h"
+
+1426455993 c:\users\juxxec_2\documents\github\hackerschool\dbengine\c++\contentvalues.h
+	<map>
+	<sstream>
+	<assert.h>
+
+1426462011 source:c:\users\juxxec_2\documents\github\hackerschool\dbengine\c++\main.cpp
+	<iostream>
+	"cdb.h"
+
+1426461815 c:\users\juxxec_2\documents\github\hackerschool\dbengine\c++\cdb.h
+	<cstdlib>
+	<cstdio>
+	<vector>
+	<algorithm>
+	<string>
+	<stdint.h>
+	"Cursor.h"
+	"ContentValues.h"
+
+1426455966 c:\users\juxxec_2\documents\github\hackerschool\dbengine\c++\cursor.h
+
+1426462025 source:c:\users\juxxec_2\documents\github\hackerschool\dbengine\c++\cdb.cpp
+	"cdb.h"
+
