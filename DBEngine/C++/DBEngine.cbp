@@ -32,6 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ContentValues.cpp" />
+		<Unit filename="ContentValues.h" />
+		<Unit filename="Cursor.cpp" />
+		<Unit filename="Cursor.h" />
+		<Unit filename="cdb.cpp" />
+		<Unit filename="cdb.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

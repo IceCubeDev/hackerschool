@@ -5,6 +5,16 @@ namespace cdb
 {
     class Cursor
     {
+        public:
+            Cursor();
+            ~Cursor();
+
+            bool hasNext();
+            void moveToNext();
+            void moveToLast();
+            void moveToFirst();
+
+        private:
 
     };
 }

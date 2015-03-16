@@ -2,16 +2,20 @@
 
 namespace cdb
 {
-    CDatabase::CDatabase()
+    //---------------------------------------------------------------------------------
+    CDatabase::CDatabase(bool reuseHandle)
     {
-        m_th = NULL;
+        this.m_th = NULL;
+        this.m_reuseHandle = reuseHandle;
     }
 
+    //---------------------------------------------------------------------------------
     CDatabase::~CDatabase()
     {
         m_th = NULL;
     }
 
+    //---------------------------------------------------------------------------------
     bool CDatabase::CreateTable(const std::string& table, const std::string& columns)
     {
         std::string path = "Databases/" + toLower(table) + ".td";
@@ -21,9 +25,11 @@ namespace cdb
         // Check for errors
         if (!pFile)
         {
-            printf("Error - Unable to create table '%s': \n", toLower(table).c_str());
+            printf("Error - Unable to create table '%s': %s\n", toLower(table).c_str(),
+                   strerror(errno));
         }
 
+        // Parse the column definition string
         std::vector<std::string> columns_vector;
         split(columns, ';', columns_vector);
 
@@ -31,12 +37,13 @@ namespace cdb
         uint32_t numCols = columns_vector.size();
         fwrite(&numCols, sizeof(uint32_t), 1, pFile);
 
-        // Parse the column definitions
+        // Iterate over each column definition
         std::vector<std::string>::iterator it;
         for (it = columns_vector.begin(); it != columns_vector.end(); ++it)
         {
             std::vector<std::string> tokens;
             split((*it), ' ', tokens);
+            // ### DEBUG ###
             printf("%-15s => %s\n", tokens[0].c_str(), tokens[1].c_str());
 
             std::string columnName = tokens[0];
@@ -61,7 +68,9 @@ namespace cdb
 
             if (ferror (pFile))
             {
-                printf("Error - There was an error writing to the table.\n");
+                printf("Error - There was an error writing to the table: %s\n",
+                        strerror(errno));
+                fclose(pFile);
                 return false;
             }
         }
@@ -70,8 +79,10 @@ namespace cdb
         return true;
     }
 
+    //---------------------------------------------------------------------------------
     bool CDatabase::Open(const std::string& table)
     {
+        // If there is another table that is opened
         if (m_th)
         {
             Close();
@@ -81,12 +92,14 @@ namespace cdb
         m_th = fopen(path.c_str(), "r+b");
         if (!m_th)
         {
-            printf("Error - Unable to open table '%s'.", toLower(table).c_str());
+            printf("Error - Unable to open table '%s': %s", toLower(table).c_str(),
+                   strerror(errno));
             return false;
         }
         return true;
     }
 
+    //---------------------------------------------------------------------------------
     void CDatabase::Close()
     {
         if (m_th)
@@ -96,28 +109,48 @@ namespace cdb
         }
     }
 
-    Cursor CDatabase::Select(const std::string& table, const ContentValues& where)
+    //---------------------------------------------------------------------------------
+    Cursor CDatabase::Select(const ContentValues& where)
     {
         return Cursor();
     }
 
-    int CDatabase::Delete(const std::string& table, const ContentValues& where)
+    //---------------------------------------------------------------------------------
+    int CDatabase::Delete(const ContentValues& where)
     {
         return 0;
     }
 
-    bool CDatabase::Insert(const std::string& table, const ContentValues& values)
+    //---------------------------------------------------------------------------------
+    bool CDatabase::Insert(const ContentValues& values)
     {
+        if (m_reuseHandle)
+        {
+            if (!m_th)
+            {
+                printf("Error - There is no table opened.\n");
+                return false;
+            }
+        } else {
+            // The open function will print the error
+            if (!Open(table))
+            {
+                return false;
+            }
+        }
+
+
 
         return true;
     }
 
-    int CDatabase::Update(const std::string& table, const ContentValues& where,
-               const ContentValues& values)
+    //---------------------------------------------------------------------------------
+    int CDatabase::Update(const ContentValues& where, const ContentValues& values)
     {
         return 0;
     }
 
+    //---------------------------------------------------------------------------------
     std::vector<std::string>& CDatabase::split(const std::string &s, char delim,
                                             std::vector<std::string>& elems)
     {
@@ -130,6 +163,7 @@ namespace cdb
         return elems;
     }
 
+    //---------------------------------------------------------------------------------
     std::string CDatabase::toLower(const std::string& str)
     {
         std::string lower;
@@ -141,6 +175,7 @@ namespace cdb
         return lower;
     }
 
+    //---------------------------------------------------------------------------------
     bool CDatabase::fileExists (const std::string& name)
     {
         if (FILE *file = fopen(name.c_str(), "r")) {

@@ -26,3 +26,34 @@
 1426462025 source:c:\users\juxxec_2\documents\github\hackerschool\dbengine\c++\cdb.cpp
 	"cdb.h"
 
+1426503865 source:/home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/cdb.cpp
+	"cdb.h"
+
+1426504106 /home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/cdb.h
+	<cstdlib>
+	<cstdio>
+	<vector>
+	<string>
+	<stdint.h>
+	<string.h>
+	<errno.h>
+	"Cursor.h"
+	"ContentValues.h"
+
+1426503949 /home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/Cursor.h
+
+1426503865 /home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/ContentValues.h
+	<map>
+	<sstream>
+	<assert.h>
+
+1426503865 source:/home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/ContentValues.cpp
+	"ContentValues.h"
+
+1426503865 source:/home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/main.cpp
+	<iostream>
+	"cdb.h"
+
+1426503997 source:/home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/Cursor.cpp
+	"Cursor.h"
+
