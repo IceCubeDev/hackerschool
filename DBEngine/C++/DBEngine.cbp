@@ -31,14 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="include" />
 		</Compiler>
-		<Unit filename="ContentValues.cpp" />
-		<Unit filename="ContentValues.h" />
-		<Unit filename="Cursor.cpp" />
-		<Unit filename="Cursor.h" />
-		<Unit filename="cdb.cpp" />
-		<Unit filename="cdb.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include/TinyDB.h" />
+		<Unit filename="include/TinyRecord.h" />
+		<Unit filename="source/TinyDB.cpp" />
+		<Unit filename="source/TinyRecord.cpp" />
+		<Unit filename="source/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

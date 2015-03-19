@@ -19,6 +19,9 @@ namespace Tiny
         static const uint8_t INTEGER = 0;
         static const uint8_t STRING = 1;
 
+        static const uint8_t ROW_DELETED = 1;
+        static const uint8_t ROW_LOCKED = 1 << 1;
+
         static uint32_t toInt(const std::string& value);
         static std::string toString(const uint32_t value);
     };

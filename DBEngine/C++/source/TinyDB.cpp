@@ -28,7 +28,8 @@ namespace Tiny
 
         if (fileExists(path))
         {
-            printf("Error - Unable to create table '%s': Table already exists.\n");
+            printf("Error - Unable to create table '%s': Table already exists.\n",
+                   toLower(table).c_str());
             return -1;
         }
 
@@ -120,6 +121,8 @@ namespace Tiny
     int TinyDB::Open(const std::string& table)
     {
         std::string path = "Databases/" + toLower(table) + ".td";
+        printf("Opening table '%s' in '%s'\n", toLower(table).c_str(), path.c_str());
+
         if (!fileExists(path))
         {
             printf("Error - Unable to open table: table '%s' does not exist.\n",
@@ -134,6 +137,8 @@ namespace Tiny
                         strerror(errno));
             return errno;
         }
+
+        return true;
     }
 
     //---------------------------------------------------------------------------------
@@ -149,7 +154,7 @@ namespace Tiny
     //---------------------------------------------------------------------------------
     int TinyDB::Insert(const TinyRecords& values)
     {
-        if (!m_currentTable)
+        if (m_currentTable == NULL)
         {
             printf("Error - Unable to insert: no table selected.\n");
             return 0;
@@ -158,6 +163,11 @@ namespace Tiny
         // Read the table schema
         TinySchema schema;
         readSchema(schema);
+        fseek(m_currentTable, 0, SEEK_END);
+
+        // Write row flags
+        uint8_t flags = 0;
+        fwrite(&flags, sizeof(uint8_t), 1, m_currentTable);
 
         // Write values, following the schema
         TinySchema::iterator it;
@@ -168,8 +178,6 @@ namespace Tiny
             key = it->first;
             cit = values.find(key);
             TinyValue record((*cit).second);
-
-            fwrite(&record.type, sizeof(uint8_t), 1, m_currentTable);
 
             if (record.type == TinyValue::INTEGER)
             {
@@ -185,7 +193,7 @@ namespace Tiny
                 fwrite(record.value.c_str(), 1, len, m_currentTable);
             }
 
-            if (ferror (m_currentTable))
+            if (ferror(m_currentTable))
             {
                 printf("Error - Unable to insert: %s\n",
                         strerror(errno));
@@ -200,7 +208,7 @@ namespace Tiny
     //---------------------------------------------------------------------------------
     int TinyDB::readSchema(TinySchema& schema)
     {
-        if (!m_currentTable)
+        if (m_currentTable != NULL)
         {
             fseek(m_currentTable, 0, SEEK_SET);
 
@@ -223,7 +231,6 @@ namespace Tiny
                 name = new char[nameLen + 1];
                 name[nameLen] = '\0';
                 fread(name, 1, nameLen, m_currentTable);
-                delete [] name;
 
                 if (ferror (m_currentTable))
                 {
@@ -234,6 +241,8 @@ namespace Tiny
                 }
 
                 schema[name] = type;
+                printf("%s => %d\n", name, type);
+                delete [] name;
             }
 
             return numCols;
