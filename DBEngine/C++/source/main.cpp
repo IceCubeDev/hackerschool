@@ -18,7 +18,12 @@ int main()
     {
         return -1;
     }
+
     db.Insert(values);
+    values.clear();
+    values["int1"] = TinyValue(TinyValue::INTEGER,
+                               TinyValue::toString(1));
+    db.Delete(values);
     db.Close();
 
     return 0;

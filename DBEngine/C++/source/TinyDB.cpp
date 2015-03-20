@@ -218,13 +218,11 @@ namespace Tiny
         readSchema(schema);
         fseek(m_currentTable, 0, SEEK_END);
 
-        size_t rowStart = ftell(m_currentTable);
-
         // Write row flags (lock the row)
+        size_t rowStart = ftell(m_currentTable);
         uint8_t flags = TinyValue::ROW_LOCKED;
         // Get the position in the file where this row starts.
         // We will come back here later to unlock the row
-        size_t rowStart = ftell(m_currentTable);
         fwrite(&flags, sizeof(uint8_t), 1, m_currentTable);
 
         // Write values, following the schema
@@ -271,7 +269,6 @@ namespace Tiny
             {
                 printf("Error - Unable to insert: %s\n",
                         strerror(errno));
-                fclose(m_currentTable);
                 return errno;
             }
         }
@@ -299,9 +296,74 @@ namespace Tiny
         TinySchema schema;
         readSchema(schema);
 
-        TinyRecords record;
+        // Read each row and search for values
+        uint8_t flags;
+        std::string key;
+        TinyValue columnValue;
+        TinyColumn column;
+        TinyRecords records;
+        uint32_t len;
+        std::vector<std::string>::iterator it;
 
+        while (!feof(m_currentTable))
+        {
+            size_t rowStart = ftell(m_currentTable);
+            fread(&flags, sizeof(uint8_t), 1, m_currentTable);
+            if (flags & TinyValue::ROW_LOCKED)
+                break;
 
+            for (it = schema.keys().begin(); it != schema.keys().end(); ++it)
+            {
+                key = (*it);
+                column = schema.get(key);
+
+                if (column.type == TinyValue::INTEGER)
+                {
+                    uint32_t value;
+                    fread(&len, sizeof(uint32_t), 1, m_currentTable);
+                    fread(&value, sizeof(uint32_t), 1, m_currentTable);
+                    records[key] = TinyValue(column.type, TinyValue::toString(value));
+                    printf("Read %d bytes.\n", len);
+                }
+                else if (column.type == TinyValue::STRING)
+                {
+                    char* value;
+                    fread(&len, sizeof(uint32_t), 1, m_currentTable);
+                    value = new char[len + 1];
+                    value[len + 1] = '\0';
+                    fread(value, 1, len, m_currentTable);
+                    records[key] = TinyValue(column.type, value);
+                    printf("Read %d bytes.\n", len);
+                    delete [] value;
+                }
+
+                if (ferror(m_currentTable))
+                {
+                    printf("Error - Unable to insert: %s\n",
+                        strerror(errno));
+                    return errno;
+                }
+            }
+
+            uint16_t criteria = 0;
+            TinyRecords::const_iterator cit;
+            for (cit = where.begin(); cit != where.end(); ++cit)
+            {
+                if (cit->second.value == records[cit->first].value)
+                {
+                    criteria ++;
+                }
+            }
+
+            if (criteria == where.size())
+            {
+                printf("Match found!\n");
+                size_t rowEnd = ftell(m_currentTable);
+                fseek(m_currentTable, rowStart, SEEK_SET);
+                uint8_t flags = TinyValue::ROW_DELETED;
+                fwrite(&flags, sizeof(uint8_t), 1, m_currentTable);
+            }
+        }
     }
 
     //---------------------------------------------------------------------------------
@@ -339,7 +401,6 @@ namespace Tiny
                 {
                     printf("Error - There was an error reading the table schema: %s\n",
                             strerror(errno));
-                    fclose(m_currentTable);
                     return errno;
                 }
 

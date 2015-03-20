@@ -29,6 +29,12 @@ namespace Tiny
 
     typedef struct column
     {
+        column ()
+        {
+            this->type = 255;
+            this->constraint = 255;
+        }
+
         column(uint8_t type, uint8_t constraint)
         {
             this->type = type;
