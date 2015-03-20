@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1426857362 source:/home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/source/main.cpp
+	<TinyDB.h>
+
+1426856484 /home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/include/TinyDB.h
+	<cstdlib>
+	<cstdio>
+	<string.h>
+	<vector>
+	<errno.h>
+	<TinyRecord.h>
+
+1426853472 /home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/include/TinyRecord.h
+	<vector>
+	<stdint.h>
+	<sstream>
+	<tr1/unordered_map>
+
+1426853398 source:/home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/source/TinyDB.cpp
+	<TinyDB.h>
+
+1426853496 source:/home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/source/TinyRecord.cpp
+	<TinyRecord.h>
+
+1426846376 /home/ivan/Documents/GitHub/hackerschool/DBEngine/C++/include/unordered-map.h
+

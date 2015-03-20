@@ -1,9 +1,10 @@
 #ifndef TINY_RECORD_H_
 #define TINY_RECORD_H_
 
+#include <vector>
 #include <stdint.h>
 #include <sstream>
-#include <map>
+#include <tr1/unordered_map>
 
 namespace Tiny
 {
@@ -26,8 +27,33 @@ namespace Tiny
         static std::string toString(const uint32_t value);
     };
 
-    typedef std::map<std::string, TinyValue> TinyRecords;
-    typedef std::map<std::string, uint8_t> TinySchema;
+    typedef struct column
+    {
+        column(uint8_t type, uint8_t constraint)
+        {
+            this->type = type;
+            this->constraint = constraint;
+        }
+
+        uint8_t type;
+        uint8_t constraint;
+    } TinyColumn;
+
+    typedef std::tr1::unordered_map<std::string, TinyValue> TinyRecords;
+
+    class TinySchema
+    {
+        public:
+            TinyColumn get(const std::string& key);
+            void set(const std::string& key, TinyColumn column);
+
+            std::vector<std::string>& keys() { return m_keys; }
+            std::vector<TinyColumn>& values() { return m_values; }
+
+        private:
+            std::vector<std::string> m_keys;
+            std::vector<TinyColumn> m_values;
+    };
 }
 
 #endif // TINY_RECORD_H_

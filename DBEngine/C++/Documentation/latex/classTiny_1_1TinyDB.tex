@@ -1,0 +1,143 @@
+\hypertarget{classTiny_1_1TinyDB}{\section{Tiny\-:\-:Tiny\-D\-B Class Reference}
+\label{classTiny_1_1TinyDB}\index{Tiny\-::\-Tiny\-D\-B@{Tiny\-::\-Tiny\-D\-B}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTiny_1_1TinyDB_a7065ccda0731928b4b24c6aa9810f551}{Tiny\-D\-B} ()
+\item 
+\hyperlink{classTiny_1_1TinyDB_a0375fa0b3e3eac3be070a03057637a12}{$\sim$\-Tiny\-D\-B} ()
+\item 
+int \hyperlink{classTiny_1_1TinyDB_ae432d4e6032a3f3395c51458de344ac6}{Create\-Table} (const std\-::string \&table, const std\-::string \&schema)
+\begin{DoxyCompactList}\small\item\em Create a table. \end{DoxyCompactList}\item 
+bool \hyperlink{classTiny_1_1TinyDB_ac5990fe5e1bc8e7fe4103bb7e435618a}{Delete\-Table} (const std\-::string \&table)
+\begin{DoxyCompactList}\small\item\em Delete a table. \end{DoxyCompactList}\item 
+bool \hyperlink{classTiny_1_1TinyDB_ad82d10c88df3c3318708518ce4571e5d}{Table\-Exists} (const std\-::string \&table)
+\begin{DoxyCompactList}\small\item\em Check if a table exists. \end{DoxyCompactList}\item 
+int \hyperlink{classTiny_1_1TinyDB_ac65bbcea4f2ffb104987aa703c49d1bc}{Open} (const std\-::string \&table)
+\begin{DoxyCompactList}\small\item\em Set the current table. \end{DoxyCompactList}\item 
+\hypertarget{classTiny_1_1TinyDB_a677ece6b542a1ffb980e900deb6723a1}{void \hyperlink{classTiny_1_1TinyDB_a677ece6b542a1ffb980e900deb6723a1}{Close} ()}\label{classTiny_1_1TinyDB_a677ece6b542a1ffb980e900deb6723a1}
+
+\begin{DoxyCompactList}\small\item\em Close the currently open table. \end{DoxyCompactList}\item 
+\hypertarget{classTiny_1_1TinyDB_ad463cbbf367165db79745ef3dc0d3a12}{void {\bfseries Select} ()}\label{classTiny_1_1TinyDB_ad463cbbf367165db79745ef3dc0d3a12}
+
+\item 
+\hypertarget{classTiny_1_1TinyDB_a12d98e82d022c4bd60cd96118ace6c5e}{int {\bfseries Insert} (const Tiny\-Records \&values)}\label{classTiny_1_1TinyDB_a12d98e82d022c4bd60cd96118ace6c5e}
+
+\item 
+\hypertarget{classTiny_1_1TinyDB_a66df568f5268b638f068c2b631e3db3d}{int {\bfseries Delete} ()}\label{classTiny_1_1TinyDB_a66df568f5268b638f068c2b631e3db3d}
+
+\item 
+\hypertarget{classTiny_1_1TinyDB_a56f31a7bd18cb1db010f6afe90edc564}{int {\bfseries Update} ()}\label{classTiny_1_1TinyDB_a56f31a7bd18cb1db010f6afe90edc564}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classTiny_1_1TinyDB_a7065ccda0731928b4b24c6aa9810f551}{\index{Tiny\-::\-Tiny\-D\-B@{Tiny\-::\-Tiny\-D\-B}!Tiny\-D\-B@{Tiny\-D\-B}}
+\index{Tiny\-D\-B@{Tiny\-D\-B}!Tiny::TinyDB@{Tiny\-::\-Tiny\-D\-B}}
+\subsubsection[{Tiny\-D\-B}]{\setlength{\rightskip}{0pt plus 5cm}Tiny\-::\-Tiny\-D\-B\-::\-Tiny\-D\-B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTiny_1_1TinyDB_a7065ccda0731928b4b24c6aa9810f551}
+Default constructor. \hypertarget{classTiny_1_1TinyDB_a0375fa0b3e3eac3be070a03057637a12}{\index{Tiny\-::\-Tiny\-D\-B@{Tiny\-::\-Tiny\-D\-B}!$\sim$\-Tiny\-D\-B@{$\sim$\-Tiny\-D\-B}}
+\index{$\sim$\-Tiny\-D\-B@{$\sim$\-Tiny\-D\-B}!Tiny::TinyDB@{Tiny\-::\-Tiny\-D\-B}}
+\subsubsection[{$\sim$\-Tiny\-D\-B}]{\setlength{\rightskip}{0pt plus 5cm}Tiny\-::\-Tiny\-D\-B\-::$\sim$\-Tiny\-D\-B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTiny_1_1TinyDB_a0375fa0b3e3eac3be070a03057637a12}
+Default destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classTiny_1_1TinyDB_ae432d4e6032a3f3395c51458de344ac6}{\index{Tiny\-::\-Tiny\-D\-B@{Tiny\-::\-Tiny\-D\-B}!Create\-Table@{Create\-Table}}
+\index{Create\-Table@{Create\-Table}!Tiny::TinyDB@{Tiny\-::\-Tiny\-D\-B}}
+\subsubsection[{Create\-Table}]{\setlength{\rightskip}{0pt plus 5cm}int Tiny\-::\-Tiny\-D\-B\-::\-Create\-Table (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{table, }
+\item[{const std\-::string \&}]{schema}
+\end{DoxyParamCaption}
+)}}\label{classTiny_1_1TinyDB_ae432d4e6032a3f3395c51458de344ac6}
+
+
+Create a table. 
+
+Create a table with a given schema. The schema is a string with a format \char`\"{}column\-\_\-name $<$space$>$ value\-\_\-type\char`\"{}. Example\-: str1k string;int1 integer Separating character is ';'
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & The name of the table \\
+\hline
+{\em schema} & A string containing the table schema \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 1 on success or a nagative value on error 
+\end{DoxyReturn}
+\hypertarget{classTiny_1_1TinyDB_ac5990fe5e1bc8e7fe4103bb7e435618a}{\index{Tiny\-::\-Tiny\-D\-B@{Tiny\-::\-Tiny\-D\-B}!Delete\-Table@{Delete\-Table}}
+\index{Delete\-Table@{Delete\-Table}!Tiny::TinyDB@{Tiny\-::\-Tiny\-D\-B}}
+\subsubsection[{Delete\-Table}]{\setlength{\rightskip}{0pt plus 5cm}bool Tiny\-::\-Tiny\-D\-B\-::\-Delete\-Table (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{table}
+\end{DoxyParamCaption}
+)}}\label{classTiny_1_1TinyDB_ac5990fe5e1bc8e7fe4103bb7e435618a}
+
+
+Delete a table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Name of the table to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true of success, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classTiny_1_1TinyDB_ac65bbcea4f2ffb104987aa703c49d1bc}{\index{Tiny\-::\-Tiny\-D\-B@{Tiny\-::\-Tiny\-D\-B}!Open@{Open}}
+\index{Open@{Open}!Tiny::TinyDB@{Tiny\-::\-Tiny\-D\-B}}
+\subsubsection[{Open}]{\setlength{\rightskip}{0pt plus 5cm}int Tiny\-::\-Tiny\-D\-B\-::\-Open (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{table}
+\end{DoxyParamCaption}
+)}}\label{classTiny_1_1TinyDB_ac65bbcea4f2ffb104987aa703c49d1bc}
+
+
+Set the current table. 
+
+All of the functions Insert(), Update(), Delete() and Select() execute for the currently selected table. If no table is selected the functions give an error.
+
+To select a table use the \hyperlink{classTiny_1_1TinyDB_ac65bbcea4f2ffb104987aa703c49d1bc}{Open()} method. Only one table can be selected(opened) at any given time. To close a table use the \hyperlink{classTiny_1_1TinyDB_a677ece6b542a1ffb980e900deb6723a1}{Close()} method.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & The name of the table to open. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true on success and a negative number on failure. 
+\end{DoxyReturn}
+\hypertarget{classTiny_1_1TinyDB_ad82d10c88df3c3318708518ce4571e5d}{\index{Tiny\-::\-Tiny\-D\-B@{Tiny\-::\-Tiny\-D\-B}!Table\-Exists@{Table\-Exists}}
+\index{Table\-Exists@{Table\-Exists}!Tiny::TinyDB@{Tiny\-::\-Tiny\-D\-B}}
+\subsubsection[{Table\-Exists}]{\setlength{\rightskip}{0pt plus 5cm}bool Tiny\-::\-Tiny\-D\-B\-::\-Table\-Exists (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{table}
+\end{DoxyParamCaption}
+)}}\label{classTiny_1_1TinyDB_ad82d10c88df3c3318708518ce4571e5d}
+
+
+Check if a table exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & The name of table to check for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the table exists, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/ivan/\-Documents/\-Git\-Hub/hackerschool/\-D\-B\-Engine/\-C++/include/Tiny\-D\-B.\-h\end{DoxyCompactItemize}
